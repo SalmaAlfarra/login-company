@@ -1,6 +1,10 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Modules\Places\Http\Controllers\CourtController;
+use Modules\User\Http\Controllers\CustomerController;
+use Modules\Option\Http\Controllers\CategoryController;
+use Modules\User\Http\Controllers\AcquaintanceController;
 use Modules\Places\Http\Controllers\PoliceOfficeController;
 
 /*
@@ -17,12 +21,18 @@ use Modules\Places\Http\Controllers\PoliceOfficeController;
 Route::get('/home', function () {
     return view('status::report.home');
 });
-Route::get('/customer', function () {
-    return view('user::customer.create');
-});
-Route::get('/acquaintance', function () {
-    return view('user::acquaintance.create');
-});
+
+Route::resource('customer', CustomerController::class);
+
+Route::resource('category', CategoryController::class);
+
+Route::resource('court', CourtController::class);
+
+Route::resource('police-office', PoliceOfficeController::class);
+
+Route::resource('acquaintance', AcquaintanceController::class);
+
+
 Route::get('/account', function () {
     return view('status::account.create');
 });
@@ -35,16 +45,11 @@ Route::get('/delegate', function () {
 Route::get('/supplier', function () {
     return view('user::supplier.create');
 });
-Route::get('/category', function () {
-    return view('option::category.create');
-});
+
 Route::get('/product', function () {
     return view('option::product.create');
 });
-Route::get('/court', function () {
-    return view('places::court.create');
-});
-Route::resource('police-office', PoliceOfficeController::class);
+
 Route::get('/legal-procedurs', function () {
     return view('option::legal-procedurs.create');
 });

@@ -44,6 +44,7 @@ class PoliceOfficeController extends Controller
     public function store(Request $request)
     {
 
+
         $request->validate([
         'name' => 'required|min:3|max:255',
         'phone' => 'required',
@@ -57,13 +58,14 @@ class PoliceOfficeController extends Controller
         'adderss' =>$request->adderss,
         ]);
         /* $data = $request->validated();
+
          $image = $data['image'];
         $imageName = Carbon::now()->format('Y_m_d_h_i')  .  '.' . $image->getClientOriginalExtension();
         $image->storeAs('/policeoffices', $imageName, ['disk' => 'public']);
 
-        $data['image'] = 'policeoffices/' . $imageName;
+        $data['image'] = 'policeoffices/' . $imageName; */
 
-        $add = PoliceOffice::create($data);*/
+        $add = PoliceOffice::create($data);
         if (!$add) {
             return $this->response(
                 'error'

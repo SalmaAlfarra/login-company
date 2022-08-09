@@ -26,14 +26,7 @@ class CustomerController extends Controller
      */
     public function create()
     {
-        $customers = Customer::all();
-
-        return view(
-            'user::customer.create',
-            compact(
-                'customers'
-            )
-        );
+        return view('user::customer.create');
     }
 
     /**

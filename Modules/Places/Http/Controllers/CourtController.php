@@ -26,15 +26,16 @@ class CourtController extends Controller
      */
     public function create()
     {
+        return view('places::court.create');
 
-        $courts = Court::all();
+        /* $courts = Court::all();
 
         return view(
             'places::court.create',
             compact(
                 'courts'
             )
-        );
+        ); */
     }
 
     /**
@@ -44,15 +45,25 @@ class CourtController extends Controller
      */
     public function store(CreateCourtRequest $request)
     {
-        $data = $request->validated();
+         $request->validate([
+         'name' => 'required|min:3|max:255',
+         'phone' => 'required',
+         'adderss' => 'required|max:255',
+         ]);
 
+         $add = PoliceOffice::create([
+         'name' => $request->name,
+         'phone' => $request->phone,
+         'adderss' =>$request->adderss,
+         ]);
+       /*  $data = $request->validated();
         $image = $data['image'];
         $imageName = Carbon::now()->format('Y_m_d_h_i')  .  '.' . $image->getClientOriginalExtension();
         $image->storeAs('/courts', $imageName, ['disk' => 'public']);
 
         $data['image'] = 'courts/' . $imageName;
 
-        $add = Court::create($data);
+        $add = Court::create($data);*/
         if (!$add) {
             return $this->response(
                 'error'
@@ -72,7 +83,8 @@ class CourtController extends Controller
      */
     public function show($id)
     {
-        return view('places::show');
+        $court = Court::findOrFail($id);
+        return view('places::show',compact('court'));
     }
 
     /**
@@ -82,7 +94,8 @@ class CourtController extends Controller
      */
     public function edit($id)
     {
-        return view('places::edit');
+        $court = Court::findOrFail($id);
+        return view('places::edit',compact('court'));
     }
 
     /**
@@ -93,7 +106,19 @@ class CourtController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $request->validate([
+        'name'    => 'required|min:3|max:255',
+        'phone'   => 'required',
+        'adderss' => 'required|max:255',
+        ]);
+
+        $court = Court::find($id);
+
+        $edit = $court->update([
+        'name'    => $request->name,
+        'phone'   => $request->phone,
+        'adderss' => $request->adderss,
+        ]);
     }
 
     /**
@@ -103,6 +128,6 @@ class CourtController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Court::destroy($id);
     }
 }

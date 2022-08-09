@@ -26,14 +26,7 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        $categories = Category::all();
-
-        return view(
-            'option::category.create',
-            compact(
-                'categories'
-            )
-        );
+        return view('option::category.create');
     }
 
     /**
@@ -41,17 +34,27 @@ class CategoryController extends Controller
      * @param Request $request
      * @return Renderable
      */
-    public function store(CreateCategoryRequest $request)
+    public function store(Request $request)
     {
-        $data = $request->validated();
+        $request->validate([
+        'name'           => 'required|min:3|max:255',
+        'descreption'    => 'required',
+        'category_image' => 'nullable|image',
+        ]);
+         $data = $request->validated();
+         $image = $data['category_image'];
+         $imageName = Carbon::now()->format('Y_m_d_h_i') . '.' . $image->getClientOriginalExtension();
+         $image->storeAs('/categories', $imageName, ['disk' => 'public']);
 
-        $image = $data['image'];
-        $imageName = Carbon::now()->format('Y_m_d_h_i')  .  '.' . $image->getClientOriginalExtension();
-        $image->storeAs('/categories', $imageName, ['disk' => 'public']);
+         $data['image'] = 'categories/' . $imageName;
 
-        $data['image'] = 'categories/' . $imageName;
+        $add = Category::create([
+        'name'           =>  $request->name,
+        'descreption'    =>  $request->phone,
+        'category_image' =>  $imageName,
+        ]);
 
-        $add = Category::create($data);
+        /* $add = Category::create($data); */
         if (!$add) {
             return $this->response(
                 'error'
@@ -81,7 +84,8 @@ class CategoryController extends Controller
      */
     public function edit($id)
     {
-        return view('option::edit');
+        $category = Category::findOrFail($id);
+        return view('places::edit',compact('category'));
     }
 
     /**
@@ -92,7 +96,26 @@ class CategoryController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $request->validate([
+        'name'           => 'required|min:3|max:255',
+        'descreption'    => 'required',
+        'category_image' => 'required|max:255',
+        ]);
+
+        $category = Category::find($id);
+
+        $data = $request->validated();
+        $image = $data['category_image'];
+        $imageName = Carbon::now()->format('Y_m_d_h_i') . '.' . $image->getClientOriginalExtension();
+        $image->storeAs('/categories', $imageName, ['disk' => 'public']);
+
+        $data['image'] = 'categories/' . $imageName;
+
+        $edit = $category->update([
+        'name'           => $request->name,
+        'descreption'    => $request->phone,
+        'category_image' => $imageName,
+        ]);
     }
 
     /**
@@ -102,6 +125,6 @@ class CategoryController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Category::destroy($id);
     }
 }

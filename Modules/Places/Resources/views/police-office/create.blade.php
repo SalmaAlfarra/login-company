@@ -36,7 +36,7 @@
                 <div class="row">
                     <div class="col-lg-5"></div>
                     <div class="col-lg-7">
-                        <button class="btn btn-primary">Save</button>
+                        <button type="submit" class="btn btn-secondary">حفظ</button>
                         <button type="reset" class="btn btn-secondary">إلغاء</button>
                     </div>
                 </div>

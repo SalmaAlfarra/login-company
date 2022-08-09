@@ -25,7 +25,7 @@ class CreatePoliceOfficeRequest extends FormRequest
             'nullable',
             'numeric',
             'digits_between:7,15',
-            Rule::unique('police_offices', 'phone')->withoutTrashed()
+            Rule::unique('police_offices', 'phone')
         ];
 
         $rules['address'] = [
