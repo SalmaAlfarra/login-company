@@ -1,0 +1,22 @@
+<?php
+return [
+    'get_data_success' => 'تمت العملية بنجاح',
+    'execution_error_message' => 'حدث خطأ أثناء تنفيذ العملية',
+    'registered_successfully' => 'تم التسجيل بنجاح',
+    'user_credentials_were_incorrect' => 'خطأ في إسم المستخدم وكلمة المرور',
+    'login_successfully' => 'تم تسجيل الدخول بنجاح',
+    'reached_maximum_limit' => 'وصلت الحد الأعلى لإرسال كلمة المرور يجرى المحاولة لاحقا',
+    'send_code_successfully' => 'تم إرسال كود التحقق',
+    'correct_code' => 'كود تحقق صحيح',
+    'incorrect_code' => 'كود تحقق غير صحيح',
+    'change_password_successfully' => 'تم تغيير كلمة المرور',
+    'old_password_incorrect' => 'كلمة المرور القديمة خطأ',
+    'send_message_successfully' => 'تم إرسال الرسالة',
+    'added_card_successfully' => 'تم إضافة البطاقة بنجاح',
+    'activated_card_successfully' => 'تم تفعيل البطاقة بنجاح',
+    'password_encryption_error' => 'خطأ في تفعيل البطاقة يرجى التواصل مع الدعم الفني',
+    'password_not_found_for_activated' => 'البطاقة غير متوفرة أو تم تفعيلها مسبقا',
+    'update_customer_info' => 'تم تعديل البيانات بنجاح',
+    'deleted_successfully' => 'تم الحذف بنجاح',
+    'email_verified_successfully' => 'تم تفعيل الحساب بنجاح',
+];

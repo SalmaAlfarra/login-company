@@ -1,0 +1,11 @@
+{
+    "User": true,
+    "Auth": true,
+    "Places": true,
+    "Status": true,
+    "Option": true,
+    "Attachment": true,
+    "Dashboards": true,
+    "Dashboard": true,
+    "Base": true
+}
