@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Modules\Places\Http\Controllers\PoliceOfficeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -43,9 +44,7 @@ Route::get('/product', function () {
 Route::get('/court', function () {
     return view('places::court.create');
 });
-Route::get('/police-office', function () {
-    return view('places::police-office.create');
-});
+Route::resource('police-office', PoliceOfficeController::class);
 Route::get('/legal-procedurs', function () {
     return view('option::legal-procedurs.create');
 });

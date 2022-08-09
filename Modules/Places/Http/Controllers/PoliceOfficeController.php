@@ -41,17 +41,29 @@ class PoliceOfficeController extends Controller
      * @param Request $request
      * @return Renderable
      */
-    public function store(CreatePoliceOfficeRequest $request)
+    public function store(Request $request)
     {
-        $data = $request->validated();
 
-        $image = $data['image'];
+        $request->validate([
+        'name' => 'required|min:3|max:255',
+        'phone' => 'required',
+        'adderss' => 'required|max:255',
+        ]);
+
+
+       $add = PoliceOffice::create([
+        'name' => $request->name,
+        'phone' => $request->phone,
+        'adderss' =>$request->adderss,
+        ]);
+        /* $data = $request->validated();
+         $image = $data['image'];
         $imageName = Carbon::now()->format('Y_m_d_h_i')  .  '.' . $image->getClientOriginalExtension();
         $image->storeAs('/policeoffices', $imageName, ['disk' => 'public']);
 
         $data['image'] = 'policeoffices/' . $imageName;
 
-        $add = PoliceOffice::create($data);
+        $add = PoliceOffice::create($data);*/
         if (!$add) {
             return $this->response(
                 'error'
@@ -81,7 +93,8 @@ class PoliceOfficeController extends Controller
      */
     public function edit($id)
     {
-        return view('places::edit');
+        $policeoffice = PoliceOffice::findOrFail($id);
+        return view('places::edit',compact('policeoffice'));
     }
 
     /**
@@ -92,7 +105,19 @@ class PoliceOfficeController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $request->validate([
+        'name' => 'required|min:3|max:255',
+        'phone' => 'required',
+        'adderss' => 'required|max:255',
+        ]);
+
+        $policeoffice = PoliceOffice::find($id);
+
+        $edit = $policeoffice->update([
+        'name' => $request->name,
+        'phone' => $request->phone,
+        'adderss' =>$request->adderss,
+        ]);
     }
 
     /**
@@ -102,6 +127,6 @@ class PoliceOfficeController extends Controller
      */
     public function destroy($id)
     {
-        //
+        PoliceOffice::destroy($id);
     }
 }
