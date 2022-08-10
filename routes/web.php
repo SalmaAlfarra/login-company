@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use Modules\Places\Http\Controllers\CourtController;
 use Modules\User\Http\Controllers\CustomerController;
+use Modules\Option\Http\Controllers\ProductController;
 use Modules\Option\Http\Controllers\CategoryController;
 use Modules\User\Http\Controllers\AcquaintanceController;
 use Modules\Places\Http\Controllers\PoliceOfficeController;
@@ -32,22 +33,21 @@ Route::resource('police-office', PoliceOfficeController::class);
 
 Route::resource('acquaintance', AcquaintanceController::class);
 
+Route::resource('product', ProductController::class);
+
+Route::resource('patron', PatronController::class);
+
 
 Route::get('/account', function () {
     return view('status::account.create');
 });
-Route::get('/patron', function () {
-    return view('user::patron.create');
-});
+
 Route::get('/delegate', function () {
     return view('user::delegate.create');
 });
+
 Route::get('/supplier', function () {
     return view('user::supplier.create');
-});
-
-Route::get('/product', function () {
-    return view('option::product.create');
 });
 
 Route::get('/legal-procedurs', function () {
