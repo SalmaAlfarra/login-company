@@ -18,7 +18,8 @@ class Acquaintance extends Model
         'identification_number',
         'relationship',
         'address',
-        'phone'
+        'phone',
+        'city_id'
     ];
 
     public function customer()

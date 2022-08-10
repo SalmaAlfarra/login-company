@@ -1,11 +1,21 @@
 @extends('base::master')
 @section('content')
+{{-- @if ($errors->any())
+        <div class="alert alert-danger">
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+    @endif --}}
     <div class="card card-custom example example-compact">
         <div class="card-header">
             <h3 class="card-title">البيانات الشخصية للمعرف</h3>
         </div>
         <!--begin::Form-->
-        <form class="form" action="{{route('acquaintance.create')}}" method="POST">
+        <form class="form" action="{{route('acquaintance.store')}}" method="POST">
+
             @csrf
             <div class="card-body">
                 <div class="form-group row mt-4">

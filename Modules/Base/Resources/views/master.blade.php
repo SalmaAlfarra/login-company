@@ -51,9 +51,12 @@ License: You must have a valid license purchased only from themeforest(the above
 		<!--begin::Header Mobile-->
 		@include("base::layout.logo")
 		<!--end::Header Mobile-->
+
 		<div class="d-flex flex-column flex-root">
 			<!--begin::Page-->
+
 			<div class="d-flex flex-row flex-column-fluid page">
+
 				<!--begin::Aside-->
 				@include("base::layout.aside")
 				<!--end::Aside-->
@@ -96,6 +99,15 @@ License: You must have a valid license purchased only from themeforest(the above
 						<div class="d-flex flex-column-fluid">
 							<!--begin::Container-->
 							<div class="container">
+                                @if ($errors->any())
+                                    <div class="alert alert-danger">
+                                        <ul>
+                                            @foreach ($errors->all() as $error)
+                                                <li>{{ $error }}</li>
+                                            @endforeach
+                                        </ul>
+                                    </div>
+                                @endif
 								@yield('content')
 							</div>
 							<!--end::Container-->

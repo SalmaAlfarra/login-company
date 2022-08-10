@@ -43,18 +43,19 @@ class CourtController extends Controller
      * @param Request $request
      * @return Renderable
      */
-    public function store(CreateCourtRequest $request)
+    public function store(Request $request)
     {
+        /* dd($request); */
          $request->validate([
-         'name' => 'required|min:3|max:255',
-         'phone' => 'required',
-         'adderss' => 'required|max:255',
+         'name'    => 'required|min:3|max:255',
+         'address' => 'required|max:255',
+         'phone'   => 'required',
          ]);
 
-         $add = PoliceOffice::create([
-         'name' => $request->name,
-         'phone' => $request->phone,
-         'adderss' =>$request->adderss,
+         $add = Court::create([
+         'name'    => $request->name,
+         'phone'   => $request->phone,
+         'address' => $request->adderss,
          ]);
        /*  $data = $request->validated();
         $image = $data['image'];

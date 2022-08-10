@@ -43,27 +43,30 @@ class AcquaintanceController extends Controller
      */
     public function store(Request $request)
     {
+        /* dd($request); */
         $request->validate([
-        'first_name'            =>  'required|min:3|max:255',
-        'father_name'           =>  'required|min:3|max:255',
-        'grandfather_name'      =>  'required|min:3|max:255',
-        'family_name'           =>  'required|min:3|max:255',
-        'identification_number' =>  'required|numeric',
-        'relationship'          =>  'required|min:3|max:255',
-        'address'               =>  'required|min:3|max:255',
-        'phone'                 =>  'required|numeric|min:7|max:15',
+        'first_name' => 'required|min:3|max:255',
+        'father_name' => 'required|min:3|max:255',
+        'grandfather_name' => 'required|min:3|max:255',
+        'family_name' => 'required|min:3|max:255',
+        'identification_number' => 'required|numeric',
+        'relationship' => 'required|min:3|max:255',
+        'address' => 'required|min:3|max:255',
+        'phone' => 'required|numeric',
+        'city_id'=>'required'
         ]);
 
         /* $data = $request->validated(); */
         $add = Acquaintance::create([
-        'first_name'            =>  $request -> first_name,
-        'father_name'           =>  $request -> father_name,
-        'grandfather_name'      =>  $request -> grandfather_name,
-        'family_name'           =>  $request -> family_name,
-        'identification_number' =>  $request -> identification_number,
-        'relationship'          =>  $request -> relationship,
-        'address'               =>  $request -> address,
-        'phone'                 =>  $request -> phone,
+        'first_name' => $request -> first_name,
+        'father_name' => $request -> father_name,
+        'grandfather_name' => $request -> grandfather_name,
+        'family_name' => $request -> family_name,
+        'identification_number' => $request -> identification_number,
+        'relationship' => $request -> relationship,
+        'address' => $request -> address,
+        'phone' => $request -> phone,
+        'city_id' => $request -> city_id,
         ]);
 
         if (!$add) {
