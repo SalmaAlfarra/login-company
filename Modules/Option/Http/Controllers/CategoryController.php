@@ -116,6 +116,7 @@ class CategoryController extends Controller
         'descreption'    => $request->phone,
         'category_image' => $imageName,
         ]);
+        
     }
 
     /**

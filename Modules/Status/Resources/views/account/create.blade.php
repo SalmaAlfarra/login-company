@@ -57,7 +57,7 @@
             <div class="row">
                 <div class="col-lg-5"></div>
                 <div class="col-lg-7">
-                    <button type="reset" class="btn btn-primary mr-2">التالي</button>
+                    <button type="submit" class="btn btn-primary mr-2">التالي</button>
                     <button type="reset" class="btn btn-secondary">إلغاء</button>
                 </div>
             </div>

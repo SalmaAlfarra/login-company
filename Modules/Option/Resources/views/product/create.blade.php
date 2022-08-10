@@ -10,7 +10,7 @@
                 <div class="form-group row mt-4">
                     <label class="col-lg-1 col-form-label text-lg-right">وصف المنتج : </label>
                     <div class="col-lg-6">
-                        <input type="text" class="form-control form-control-solid" placeholder="وصف المنتج">
+                        <input type="text" name="description" class="form-control form-control-solid" placeholder="وصف المنتج">
                         <span class="form-text text-muted">ادخل وصف المنتج</span>
                     </div>
                 </div>
@@ -18,7 +18,7 @@
                 <div class="form-group row mt-4">
                     <label class="col-lg-1 col-form-label text-lg-right">اسم المنتج : </label>
                     <div class="col-lg-6">
-                        <textarea class="form-control form-control-solid" id="exampleTextarea" rows="3"placeholder="وصف المنتج"></textarea>
+                        <textarea class="form-control form-control-solid" name="name" id="exampleTextarea" rows="3"placeholder="وصف المنتج"></textarea>
                         <span class="form-text text-muted">ادخل اسم المنتج</span>
                     </div>
                 </div>
@@ -44,7 +44,7 @@
                 <div class="form-group row mt-4">
                     <label class="col-lg-1 col-form-label text-lg-right">سعر الشراء : </label>
                     <div class="col-lg-3">
-                        <input type="number" class="form-control form-control-solid" placeholder="سعر الشراء">
+                        <input type="number" name="" class="form-control form-control-solid" placeholder="سعر الشراء">
                         <span class="form-text text-muted">أدخل  سعر الشراء من المورد للمنتج الذي قمت بإدراجه</span>
                     </div>
                 </div>
