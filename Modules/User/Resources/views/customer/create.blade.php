@@ -55,7 +55,7 @@
             <div class="form-group row mt-4">
                 <label class="col-lg-1 col-form-label text-lg-right">مركز الشرطة</label>
                 <div class="col-lg-5">
-                    <select name="city_id" id="city_id" class="form-control">
+                    <select name="police_office_id" id="police_office_id" class="form-control">
                         <option>اختر مركز الشرطة </option>
                         @foreach ($police as $item)
                             <option value="{{$item->id}}"> {{$item->name}}</option>
@@ -68,7 +68,7 @@
             <div class="form-group row mt-4">
                 <label class="col-lg-1 col-form-label text-lg-right">المحكمة</label>
                 <div class="col-lg-5">
-                    <select name="city_id" id="city_id" class="form-control">
+                    <select name="court_id" id="court_id" class="form-control">
                         <option>اختر المحكمة</option>
                         @foreach ($court as $item)
                             <option value="{{$item->id}}"> {{$item->name}}</option>
@@ -231,30 +231,30 @@
                     <span class="form-text text-muted">أدخل قيمة مراتب العميل </span>
                 </div>
             </div>
-            <div class="separator separator-dashed my-10"></div>
+            {{-- <div class="separator separator-dashed my-10"></div>
             <div class="form-group row mt-4">
                 <label class="col-lg-1 col-form-label text-lg-right">بنك العميل : </label>
                 <div class="col-lg-5">
-                    <select name="branch_id" id="branch_id" class="form-control">
+                    <select name="bank_id" id="bank_id" class="form-control">
                         <option>اختر بنك العميل</option>
-                        @foreach ($branch as $item)
+                        @foreach ($bank as $item)
                             <option value="{{$item->id}}"> {{$item->name}}</option>
                         @endforeach
                     </select>
-                    <span class="form-text text-muted">اختر فرع العميل : </span>
+                    <span class="form-text text-muted">اختر بنك العميل : </span>
                 </div>
-            </div>
+            </div> --}}
             <div class="separator separator-dashed my-10"></div>
             <div class="form-group row mt-4">
                 <label class="col-lg-1 col-form-label text-lg-right">فرع بنك العميل :</label>
                 <div class="col-lg-5">
                     <select name="bank_id" id="bank_id" class="form-control">
-                        <option>اختر فرع العميل </option>
+                        <option>اختر   بنك العميل </option>
                         @foreach ($branch as $item)
                             <option value="{{$item->id}}"> {{$item->name}}</option>
                         @endforeach
                     </select>
-                    <span class="form-text text-muted">اختر الفرع </span>
+                    <span class="form-text text-muted">اختر البنك </span>
                 </div>
             </div>
         </div>
