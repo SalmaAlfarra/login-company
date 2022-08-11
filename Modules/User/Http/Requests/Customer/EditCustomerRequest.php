@@ -84,10 +84,10 @@ class CreateCustomerRequest extends FormRequest
         ];
 
         $rules['phone'] = [
-            'nullable',
+
             'numeric',
             'digits_between:7,15',
-            Rule::unique('customers', 'phone')->withoutTrashed()
+            /* Rule::unique('customers', 'phone') */
         ];
 
         $rules['profile_image'] = [

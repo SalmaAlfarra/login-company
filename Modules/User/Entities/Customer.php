@@ -47,7 +47,11 @@ class Customer extends Model
         'partner_family_name',
         'partner_identification_number',
         'partner_employer',
-        'partner_family_address'
+        'partner_family_address',
+        'city_id',
+        'court_id',
+        'police_office_id',
+        'branch_id'
     ];
 
     public function account_statment()

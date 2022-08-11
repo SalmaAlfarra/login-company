@@ -5,7 +5,8 @@
         <h3 class="card-title">البيانات الشخصية للعميل</h3>
     </div>
     <!--begin::Form-->
-    <form class="form">
+    <form class="form" action="{{route('customer.store')}} " method="POST">
+        @csrf
         <div class="card-body">
             <div class="form-group row mt-4">
                 <label class="col-lg-1 col-form-label text-lg-right">الاسم الشخصي : </label>
@@ -37,6 +38,54 @@
                     <span class="form-text text-muted">أدخل عنوان سكن العميل </span>
                 </div>
             </div>
+            <div class="form-group row mt-4">
+                    <label class="col-lg-1 col-form-label text-lg-right">المدينة</label>
+                    <div class="col-lg-5">
+                        <select name="city_id" id="city_id" class="form-control">
+                            <option>اختر مدينة</option>
+                            @foreach ($city as $item)
+                                <option value="{{$item->id}}"> {{$item->name}}</option>
+                            @endforeach
+                        </select>
+                        <span class="form-text text-muted">اختر المدينة </span>
+                    </div>
+                </div>
+            <div class="form-group row mt-4">
+                    <label class="col-lg-1 col-form-label text-lg-right">مركز الشرطة</label>
+                    <div class="col-lg-5">
+                        <select name="city_id" id="city_id" class="form-control">
+                            <option>اختر مركز الشرطة </option>
+                            @foreach ($police as $item)
+                                <option value="{{$item->id}}"> {{$item->name}}</option>
+                            @endforeach
+                        </select>
+                        <span class="form-text text-muted">اختر مركز الشرطة </span>
+                    </div>
+                </div>
+            <div class="form-group row mt-4">
+                    <label class="col-lg-1 col-form-label text-lg-right">المحكمة</label>
+                    <div class="col-lg-5">
+                        <select name="city_id" id="city_id" class="form-control">
+                            <option>اختر المحكمة</option>
+                            @foreach ($court as $item)
+                                <option value="{{$item->id}}"> {{$item->name}}</option>
+                            @endforeach
+                        </select>
+                        <span class="form-text text-muted">اختر المحكمة </span>
+                    </div>
+                </div>
+            <div class="form-group row mt-4">
+                    <label class="col-lg-1 col-form-label text-lg-right">الفرع</label>
+                    <div class="col-lg-5">
+                        <select name="city_id" id="city_id" class="form-control">
+                            <option>اختر الفرع</option>
+                            @foreach ($branch as $item)
+                                <option value="{{$item->id}}"> {{$item->name}}</option>
+                            @endforeach
+                        </select>
+                        <span class="form-text text-muted">اختر الفرع </span>
+                    </div>
+                </div>
             <div class="separator separator-dashed my-10"></div>
             <div class="form-group row mt-4">
                 <label class="col-lg-1 col-form-label text-lg-right">رقم الجوال : </label>
@@ -86,7 +135,7 @@
             <div class="form-group row">
                 <label class="col-lg-1 col-form-label text-lg-right">جهة العمل :</label>
                 <div class="col-lg-3">
-                    <input type="text" class="form-control form-control-solid" placeholder="جهة العمل">
+                    <input type="text" name="employer" class="form-control form-control-solid" placeholder="جهة العمل">
                     <span class="form-text text-muted">أدخل جهة العمل </span>
                 </div>
                 <label class="col-lg-1 col-form-label text-lg-right">المسمى الوظيفي :</label>
@@ -96,15 +145,15 @@
                 </div>
                 <label class="col-lg-1 col-form-label text-lg-right">نوع الوظيفة :</label>
                 <div class="col-lg-3">
-                    <div class="checkbox-inline">
+                    <div class="radio-inline">
                         <label class="checkbox checkbox-success">
-                        <input type="checkbox" name="Checkboxes5">
+                        <input type="radio" name="job_type">
                         <span></span>حكومية</label>
                         <label class="checkbox checkbox-success">
-                        <input type="checkbox" name="Checkboxes5" >
+                        <input type="radio" name="job_type" >
                         <span></span>مدنية</label>
                         <label class="checkbox checkbox-success checkbox-center">
-                        <input type="checkbox" name="Checkboxes5" >
+                        <input type="radio" name="job_type" >
                         <span></span>أخرى</label>
                     </div>
                     <span class="form-text text-muted">أدخل نوع الوظيفة</span>
@@ -114,15 +163,15 @@
             <div class="form-group row">
                 <label class="col-lg-1 col-form-label text-lg-right">الحالة الإجتماعية :</label>
                 <div class="col-lg-3">
-                    <div class="checkbox-inline col-lg-1 col-form-label text-lg-right">
-                        <label class="checkbox checkbox-success">
-                        <input type="checkbox" name="Checkboxes5">
+                    <div class="radio-inline col-lg-1 col-form-label text-lg-right">
+                        <label class="radio radio-success">
+                        <input type="radio" name="marital_status">
                         <span></span>أعزب</label>
-                        <label class="checkbox checkbox-success">
-                        <input type="checkbox" name="Checkboxes5" >
+                        <label class="radio radio-success">
+                        <input type="radio" name="marital_status" >
                         <span></span>متزوج</label>
-                        <label class="checkbox checkbox-success">
-                        <input type="checkbox" name="Checkboxes5" >
+                        <label class="radio radio-success">
+                        <input type="radio" name="marital_status" >
                         <span></span>مطلق</label>
                     </div>
                     <span class="form-text text-muted">اختر الحالة الإجتماعية </span>
@@ -156,18 +205,18 @@
                     <input type="text" name="partner_family_address" class="form-control form-control-solid" placeholder="عنوان سكن أهل الزوج/ة">
                     <span class="form-text text-muted">أدخل عنوان سكن أهل الزوج/ة</span>
                 </div>
-                {{-- <label class="col-lg-1 col-form-label text-lg-right"> رقم جوال الزوج/ة:</label>
-                <div class="col-lg-5">
-                    <input type="phone" class="form-control form-control-solid" placeholder="رقم جوال الزوج/ة">
-                    <span class="form-text text-muted">أدخل رقم جوال الزوج/ة</span>
-                </div> --}}
+                <label class="col-lg-1 col-form-label text-lg-right"> رقم هوية الزوج/ة:</label>
+                <div class="col-lg-4 ">
+                    <input type="phone" name="partner_identification_number" class="form-control form-control-solid" placeholder="رقم هوية الزوج/ة">
+                    <span class="form-text text-muted">أدخل رقم هوية الزوج/ة</span>
+                </div>
             </div>
         </div>
         <div class="card-footer">
             <div class="row">
                 <div class="col-lg-5"></div>
                 <div class="col-lg-7">
-                    <button type="reset" class="btn btn-primary mr-2">التالي</button>
+                    <button type="submit" class="btn btn-primary mr-2">التالي</button>
                     <button type="reset" class="btn btn-secondary">إلغاء</button>
                 </div>
             </div>

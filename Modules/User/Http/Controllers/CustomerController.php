@@ -3,10 +3,14 @@
 namespace Modules\User\Http\Controllers;
 
 use Carbon\Carbon;
-use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\Request;
+use Modules\Places\Entities\City;
 use Illuminate\Routing\Controller;
+use Modules\Places\Entities\Court;
+use Modules\Places\Entities\Branch;
 use Modules\User\Entities\Customer;
+use Modules\Places\Entities\PoliceOffice;
+use Illuminate\Contracts\Support\Renderable;
 use Modules\User\Http\Requests\Customer\CreateCustomerRequest;
 
 class CustomerController extends Controller
@@ -26,7 +30,17 @@ class CustomerController extends Controller
      */
     public function create()
     {
-        return view('user::customer.create');
+        $city   =  City::all();
+        $court  =  Court::all();
+        $branch =  Branch::all();
+        $police =  PoliceOffice::all();
+
+        return view('user::customer.create',[
+            'city'   => $city,
+            'court'  => $court,
+            'branch' => $branch,
+            'police' => $police,
+        ]);
     }
 
     /**
@@ -34,35 +48,11 @@ class CustomerController extends Controller
      * @param Request $request
      * @return Renderable
      */
-    public function store(CreateCustomerRequest $request)
+    public function store(Request $request)
     {
-        $request->validate([
-        'first_name' => 'required|min:3|max:255',
-        'father_name' => 'required|min:3|max:255',
-        'grandfather_name' => 'required|min:3|max:255',
-        'family_name' => 'required|min:3|max:255',
-        'identification_number' => 'required|max:255',
-        'government_service_portal_password' => 'required|max:255',
-        'date_of_birth' => 'required|max:255',
-        'job_title' => 'required|max:255',
-        'job_type' => 'required|min:3|max:255',
-        'employer' => 'required|min:3|max:255',
-        'address' => 'required|min:3|max:255',
-        'phone' => 'required|numeric',
-        'city_id' => 'required',
-        'partner_family_address'=> 'required',
-        'partner_employer' => 'required',
-        'partner_identification_number' => 'required',
-        'partner_family_name' => 'required',
-        'partner_grandfather_name' => 'required',
-        'partner_father_name' => 'required',
-        'partner_first_name' => 'required',
-        'court_id' => 'required',
-        'police_office_id' => 'required',
-
-
-        ]);
-        $add = Coustomer::create([
+        /* dd($request); */
+       /* bbbb  */
+        $add = Customer::create([
         'first_name' => $request->first_name,
         'father_name' => $request->father_name,
         'grandfather_name' => $request->grandfather_name,
@@ -75,7 +65,7 @@ class CustomerController extends Controller
         'employer' => $request->employer,
         'address' => $request->address,
         'phone' => $request->phone,
-        'city_id' => $request->city_id,
+        /* 'city_id' => $request->city_id, */
         'partner_family_address'=> $request->partner_family_address,
         'partner_employer' => $request->partner_employer,
         'partner_identification_number' => $request->partner_identification_number,
@@ -83,8 +73,10 @@ class CustomerController extends Controller
         'partner_grandfather_name' => $request->partner_grandfather_name,
         'partner_father_name' => $request->partner_father_name,
         'partner_first_name' => $request->partner_first_name,
-        'court_id' => $request->court_id,
+        /* 'court_id' => $request->court_id,
         'police_office_id' => $request->police_office_id,
+        'branch_id' => $request->branch_id, */
+        'identification_issuance_date' => $request-> identification_issuance_date
         ]);
     }
 
