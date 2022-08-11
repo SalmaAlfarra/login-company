@@ -1,6 +1,6 @@
 @extends('base::master')
 @section('content')
-<div class="card card-custom example example-compact">
+<div  class="card card-custom example example-compact">
     <div class="card-header">
         <h3 class="card-title">البيانات الشخصية للعميل</h3>
     </div>
@@ -75,19 +75,6 @@
                         @endforeach
                     </select>
                     <span class="form-text text-muted">اختر المحكمة </span>
-                </div>
-            </div>
-            <div class="separator separator-dashed my-10"></div>
-            <div class="form-group row mt-4">
-                <label class="col-lg-1 col-form-label text-lg-right">الفرع</label>
-                <div class="col-lg-5">
-                    <select name="city_id" id="city_id" class="form-control">
-                        <option>اختر الفرع</option>
-                        @foreach ($branch as $item)
-                            <option value="{{$item->id}}"> {{$item->name}}</option>
-                        @endforeach
-                    </select>
-                    <span class="form-text text-muted">اختر الفرع </span>
                 </div>
             </div>
             <div class="separator separator-dashed my-10"></div>
@@ -222,11 +209,56 @@
             <div class="form-group row mt-4">
                 <label class="col-lg-1 col-form-label text-lg-right">جهة عمل الزوج/ة:</label>
                 <div class="col-lg-5">
-                    <input type="text" name="'partner_employer" class="form-control form-control-solid" placeholder="جهة عمل الزوج/ة">
+                    <input type="text" name="partner_employer" class="form-control form-control-solid" placeholder="جهة عمل الزوج/ة">
                     <span class="form-text text-muted">أدخل جهة عمل الزوج/ة</span>
                 </div>
             </div>
         </div>
+        <div class="card-body">
+            <h3 class="card-title">بيانات حساب لعميل البنكية</h3>
+            <div class="form-group row mt-4">
+                <label class="col-lg-1 col-form-label text-lg-right">رقم الحساب : </label>
+                <div class="col-lg-5">
+                    <input type="phone" name="phone" class="form-control form-control-solid" placeholder=" رقم الحساب ">
+                    <span class="form-text text-muted">أدخل حساب العميل </span>
+                </div>
+            </div>
+            <div class="separator separator-dashed my-10"></div>
+            <div class="form-group row mt-4">
+                <label class="col-lg-1 col-form-label text-lg-right">قيمة المراتب :</label>
+                <div class="col-lg-5">
+                    <input type="phone" name="phone" class="form-control form-control-solid" placeholder="قيمة المراتب ">
+                    <span class="form-text text-muted">أدخل قيمة مراتب العميل </span>
+                </div>
+            </div>
+            <div class="separator separator-dashed my-10"></div>
+            <div class="form-group row mt-4">
+                <label class="col-lg-1 col-form-label text-lg-right">بنك العميل : </label>
+                <div class="col-lg-5">
+                    <select name="city_id" id="city_id" class="form-control">
+                        <option>اختر بنك العميل</option>
+                        @foreach ($branch as $item)
+                            <option value="{{$item->id}}"> {{$item->name}}</option>
+                        @endforeach
+                    </select>
+                    <span class="form-text text-muted">اختر فرع العميل : </span>
+                </div>
+            </div>
+            <div class="separator separator-dashed my-10"></div>
+            <div class="form-group row mt-4">
+                <label class="col-lg-1 col-form-label text-lg-right">فرع بنك العميل :</label>
+                <div class="col-lg-5">
+                    <select name="city_id" id="city_id" class="form-control">
+                        <option>اختر فرع العميل </option>
+                        @foreach ($branch as $item)
+                            <option value="{{$item->id}}"> {{$item->name}}</option>
+                        @endforeach
+                    </select>
+                    <span class="form-text text-muted">اختر الفرع </span>
+                </div>
+            </div>
+        </div>
+
         <div class="card-footer">
             <div class="row">
                 <div class="col-lg-5"></div>
