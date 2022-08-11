@@ -68,7 +68,9 @@ class AcquaintanceController extends Controller
         'phone' => $request -> phone,
         'city_id' => $request -> city_id,
         ]);
-        return  view('user::patron.create');
+        return view('user::patron.create',[
+        'city' => City::all(),
+        ]);
 
         /* if (!$add) {
             return $this->response(

@@ -27,10 +27,9 @@ class PatronController extends Controller
      */
     public function create()
     {
-        $city = City::all();
+        
          return view('user::patron.create',[
-            'city'=>$city,
-
+            'city' => City::all(),
          ]);
     }
 
