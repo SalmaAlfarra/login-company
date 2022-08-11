@@ -3,10 +3,11 @@
 namespace Modules\User\Http\Controllers;
 
 use Carbon\Carbon;
-use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\Request;
-use Illuminate\Routing\Controller;
+use Modules\Places\Entities\City;
 use Modules\User\Entities\Patron;
+use Illuminate\Routing\Controller;
+use Illuminate\Contracts\Support\Renderable;
 use Modules\User\Http\Requests\Patron\CreatePatronRequest;
 
 class PatronController extends Controller
@@ -26,14 +27,11 @@ class PatronController extends Controller
      */
     public function create()
     {
-        $patrons = Patron::all();
+        $city = City::all();
+         return view('user::patron.create',[
+            'city'=>$city,
 
-        return view(
-            'user::patron.create',
-            compact(
-                'patrons'
-            )
-        );
+         ]);
     }
 
     /**
@@ -43,25 +41,30 @@ class PatronController extends Controller
      */
     public function store(CreatePatronRequest $request)
     {
-        $data = $request->validated();
+        $request->validate([
+        'first_name' => 'required|min:3|max:255',
+        'father_name' => 'required|min:3|max:255',
+        'grandfather_name' => 'required|min:3|max:255',
+        'family_name' => 'required|min:3|max:255',
+        'identification_number' => 'required|numeric',
+        'relationship' => 'required|min:3|max:255',
+        'address' => 'required|min:3|max:255',
+        'phone' => 'required|numeric',
+        'city_id'=>'required'
+        ]);
 
-        $image = $data['image'];
-        $imageName = Carbon::now()->format('Y_m_d_h_i')  .  '.' . $image->getClientOriginalExtension();
-        $image->storeAs('/patrons', $imageName, ['disk' => 'public']);
-
-        $data['image'] = 'patrons/' . $imageName;
-
-        $add = Patron::create($data);
-        if (!$add) {
-            return $this->response(
-                'error'
-            );
-        }
-
-        return $this->response(
-            'added',
-            route('user::patron.create')
-        );
+        /* $data = $request->validated(); */
+        $add = Patron::create([
+        'first_name' => $request -> first_name,
+        'father_name' => $request -> father_name,
+        'grandfather_name' => $request -> grandfather_name,
+        'family_name' => $request -> family_name,
+        'identification_number' => $request -> identification_number,
+        'relationship' => $request -> relationship,
+        'address' => $request -> address,
+        'phone' => $request -> phone,
+        'city_id' => $request -> city_id,
+        ]);
     }
 
     /**

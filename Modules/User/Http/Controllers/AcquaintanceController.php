@@ -68,8 +68,9 @@ class AcquaintanceController extends Controller
         'phone' => $request -> phone,
         'city_id' => $request -> city_id,
         ]);
+        return  view('user::patron.create');
 
-        if (!$add) {
+        /* if (!$add) {
             return $this->response(
                 'error'
             );
@@ -78,7 +79,7 @@ class AcquaintanceController extends Controller
         return $this->response(
             'added',
             route('user::acquaintance.create')
-        );
+        ); */
     }
 
     /**

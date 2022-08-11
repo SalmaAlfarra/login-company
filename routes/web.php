@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Modules\User\Http\Controllers\PatronController;
 use Modules\Places\Http\Controllers\CourtController;
 use Modules\User\Http\Controllers\CustomerController;
 use Modules\Option\Http\Controllers\ProductController;
