@@ -38,54 +38,58 @@
                     <span class="form-text text-muted">أدخل عنوان سكن العميل </span>
                 </div>
             </div>
+            <div class="separator separator-dashed my-10"></div>
             <div class="form-group row mt-4">
-                    <label class="col-lg-1 col-form-label text-lg-right">المدينة</label>
-                    <div class="col-lg-5">
-                        <select name="city_id" id="city_id" class="form-control">
-                            <option>اختر مدينة</option>
-                            @foreach ($city as $item)
-                                <option value="{{$item->id}}"> {{$item->name}}</option>
-                            @endforeach
-                        </select>
-                        <span class="form-text text-muted">اختر المدينة </span>
-                    </div>
+                <label class="col-lg-1 col-form-label text-lg-right">المدينة</label>
+                <div class="col-lg-5">
+                    <select name="city_id" id="city_id" class="form-control">
+                        <option>اختر مدينة</option>
+                        @foreach ($city as $item)
+                            <option value="{{$item->id}}"> {{$item->name}}</option>
+                        @endforeach
+                    </select>
+                    <span class="form-text text-muted">اختر المدينة </span>
                 </div>
+            </div>
+            <div class="separator separator-dashed my-10"></div>
             <div class="form-group row mt-4">
-                    <label class="col-lg-1 col-form-label text-lg-right">مركز الشرطة</label>
-                    <div class="col-lg-5">
-                        <select name="city_id" id="city_id" class="form-control">
-                            <option>اختر مركز الشرطة </option>
-                            @foreach ($police as $item)
-                                <option value="{{$item->id}}"> {{$item->name}}</option>
-                            @endforeach
-                        </select>
-                        <span class="form-text text-muted">اختر مركز الشرطة </span>
-                    </div>
+                <label class="col-lg-1 col-form-label text-lg-right">مركز الشرطة</label>
+                <div class="col-lg-5">
+                    <select name="city_id" id="city_id" class="form-control">
+                        <option>اختر مركز الشرطة </option>
+                        @foreach ($police as $item)
+                            <option value="{{$item->id}}"> {{$item->name}}</option>
+                        @endforeach
+                    </select>
+                    <span class="form-text text-muted">اختر مركز الشرطة </span>
                 </div>
+            </div>
+            <div class="separator separator-dashed my-10"></div>
             <div class="form-group row mt-4">
-                    <label class="col-lg-1 col-form-label text-lg-right">المحكمة</label>
-                    <div class="col-lg-5">
-                        <select name="city_id" id="city_id" class="form-control">
-                            <option>اختر المحكمة</option>
-                            @foreach ($court as $item)
-                                <option value="{{$item->id}}"> {{$item->name}}</option>
-                            @endforeach
-                        </select>
-                        <span class="form-text text-muted">اختر المحكمة </span>
-                    </div>
+                <label class="col-lg-1 col-form-label text-lg-right">المحكمة</label>
+                <div class="col-lg-5">
+                    <select name="city_id" id="city_id" class="form-control">
+                        <option>اختر المحكمة</option>
+                        @foreach ($court as $item)
+                            <option value="{{$item->id}}"> {{$item->name}}</option>
+                        @endforeach
+                    </select>
+                    <span class="form-text text-muted">اختر المحكمة </span>
                 </div>
+            </div>
+            <div class="separator separator-dashed my-10"></div>
             <div class="form-group row mt-4">
-                    <label class="col-lg-1 col-form-label text-lg-right">الفرع</label>
-                    <div class="col-lg-5">
-                        <select name="city_id" id="city_id" class="form-control">
-                            <option>اختر الفرع</option>
-                            @foreach ($branch as $item)
-                                <option value="{{$item->id}}"> {{$item->name}}</option>
-                            @endforeach
-                        </select>
-                        <span class="form-text text-muted">اختر الفرع </span>
-                    </div>
+                <label class="col-lg-1 col-form-label text-lg-right">الفرع</label>
+                <div class="col-lg-5">
+                    <select name="city_id" id="city_id" class="form-control">
+                        <option>اختر الفرع</option>
+                        @foreach ($branch as $item)
+                            <option value="{{$item->id}}"> {{$item->name}}</option>
+                        @endforeach
+                    </select>
+                    <span class="form-text text-muted">اختر الفرع </span>
                 </div>
+            </div>
             <div class="separator separator-dashed my-10"></div>
             <div class="form-group row mt-4">
                 <label class="col-lg-1 col-form-label text-lg-right">رقم الجوال : </label>
@@ -143,16 +147,19 @@
                     <input type="text" name="job_title" class="form-control form-control-solid" placeholder="المسمى الوظيفي">
                     <span class="form-text text-muted">أدخل المسمى الوظيفي</span>
                 </div>
+            </div>
+            <div class="separator separator-dashed my-10"></div>
+            <div class="form-group row">
                 <label class="col-lg-1 col-form-label text-lg-right">نوع الوظيفة :</label>
                 <div class="col-lg-3">
-                    <div class="radio-inline">
-                        <label class="checkbox checkbox-success">
+                    <div class="radio-inline col-lg-1 col-form-label text-lg-right">
+                        <label class="radio radio-success">
                         <input type="radio" name="job_type">
                         <span></span>حكومية</label>
-                        <label class="checkbox checkbox-success">
+                        <label class="radio radio-success">
                         <input type="radio" name="job_type" >
                         <span></span>مدنية</label>
-                        <label class="checkbox checkbox-success checkbox-center">
+                        <label class="radio radio-success">
                         <input type="radio" name="job_type" >
                         <span></span>أخرى</label>
                     </div>
@@ -209,6 +216,14 @@
                 <div class="col-lg-4 ">
                     <input type="phone" name="partner_identification_number" class="form-control form-control-solid" placeholder="رقم هوية الزوج/ة">
                     <span class="form-text text-muted">أدخل رقم هوية الزوج/ة</span>
+                </div>
+            </div>
+            <div class="separator separator-dashed my-10"></div>
+            <div class="form-group row mt-4">
+                <label class="col-lg-1 col-form-label text-lg-right">جهة عمل الزوج/ة:</label>
+                <div class="col-lg-5">
+                    <input type="text" name="'partner_employer" class="form-control form-control-solid" placeholder="جهة عمل الزوج/ة">
+                    <span class="form-text text-muted">أدخل جهة عمل الزوج/ة</span>
                 </div>
             </div>
         </div>
