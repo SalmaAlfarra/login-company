@@ -16,9 +16,6 @@ return new class extends Migration
         Schema::create('branches', function (Blueprint $table) {
             $table->id();
             $table->string('name')->nullable();
-            $table->string('phone')->nullable();
-            $table->string('address')->nullable();
-            $table->string('email', 250)->unique();
             $table->foreignId('bank_id')->references('id')->on('Banks')->nullable();
             $table->timestamps();
         });
