@@ -8,6 +8,7 @@ use Modules\Places\Entities\City;
 use Illuminate\Routing\Controller;
 use Modules\User\Entities\Acquaintance;
 use Illuminate\Contracts\Support\Renderable;
+use Modules\User\Http\Controllers\PatronController;
 use Modules\User\Http\Requests\Acquaintance\CreateAcquaintanceRequest;
 
 class AcquaintanceController extends Controller
@@ -71,6 +72,7 @@ class AcquaintanceController extends Controller
         return view('user::patron.create',[
         'city' => City::all(),
         ]);
+        return redirect()->action([PatronController::class, 'create']);
 
         /* if (!$add) {
             return $this->response(

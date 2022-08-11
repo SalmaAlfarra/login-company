@@ -11,8 +11,10 @@ use Modules\Places\Entities\Court;
 use Modules\Places\Entities\Branch;
 use Modules\User\Entities\Customer;
 use Modules\Option\Entities\Product;
+use Modules\User\Entities\Acquaintance;
 use Modules\Places\Entities\PoliceOffice;
 use Illuminate\Contracts\Support\Renderable;
+use Modules\User\Http\Controllers\AcquaintanceController;
 use Modules\User\Http\Requests\Customer\CreateCustomerRequest;
 
 class CustomerController extends Controller
@@ -82,12 +84,7 @@ class CustomerController extends Controller
             'branch_id' => $request->branch_id,
             'identification_issuance_date' => $request->identification_issuance_date
         ]);
-        return view(
-        'user::acquaintance.create', [
-        'city' => City::all(),
-        'acqua' => $acquaintances
-        ]);
-        
+       return redirect()->action([AcquaintanceController::class, 'create']);
     }
 
     /**
