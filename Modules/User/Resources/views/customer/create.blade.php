@@ -231,7 +231,7 @@
                     <span class="form-text text-muted">أدخل قيمة مراتب العميل </span>
                 </div>
             </div>
-            {{-- <div class="separator separator-dashed my-10"></div>
+            <div class="separator separator-dashed my-10"></div>
             <div class="form-group row mt-4">
                 <label class="col-lg-1 col-form-label text-lg-right">بنك العميل : </label>
                 <div class="col-lg-5">
@@ -243,12 +243,12 @@
                     </select>
                     <span class="form-text text-muted">اختر بنك العميل : </span>
                 </div>
-            </div> --}}
+            </div>
             <div class="separator separator-dashed my-10"></div>
             <div class="form-group row mt-4">
                 <label class="col-lg-1 col-form-label text-lg-right">فرع بنك العميل :</label>
                 <div class="col-lg-5">
-                    <select name="bank_id" id="bank_id" class="form-control">
+                    <select name="branch_id" id="bank_id" class="form-control">
                         <option>اختر   بنك العميل </option>
                         @foreach ($branch as $item)
                             <option value="{{$item->id}}"> {{$item->name}}</option>
