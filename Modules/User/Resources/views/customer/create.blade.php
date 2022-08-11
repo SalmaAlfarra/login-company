@@ -219,7 +219,7 @@
             <div class="form-group row mt-4">
                 <label class="col-lg-1 col-form-label text-lg-right">رقم الحساب : </label>
                 <div class="col-lg-5">
-                    <input type="phone" name="phone" class="form-control form-control-solid" placeholder=" رقم الحساب ">
+                    <input type="number" name="bank_account_number" class="form-control form-control-solid" placeholder=" رقم الحساب ">
                     <span class="form-text text-muted">أدخل حساب العميل </span>
                 </div>
             </div>
@@ -227,7 +227,7 @@
             <div class="form-group row mt-4">
                 <label class="col-lg-1 col-form-label text-lg-right">قيمة المراتب :</label>
                 <div class="col-lg-5">
-                    <input type="phone" name="phone" class="form-control form-control-solid" placeholder="قيمة المراتب ">
+                    <input type="number" name="salary" class="form-control form-control-solid" placeholder="قيمة المراتب ">
                     <span class="form-text text-muted">أدخل قيمة مراتب العميل </span>
                 </div>
             </div>
@@ -235,7 +235,7 @@
             <div class="form-group row mt-4">
                 <label class="col-lg-1 col-form-label text-lg-right">بنك العميل : </label>
                 <div class="col-lg-5">
-                    <select name="city_id" id="city_id" class="form-control">
+                    <select name="branch_id" id="branch_id" class="form-control">
                         <option>اختر بنك العميل</option>
                         @foreach ($branch as $item)
                             <option value="{{$item->id}}"> {{$item->name}}</option>
@@ -248,7 +248,7 @@
             <div class="form-group row mt-4">
                 <label class="col-lg-1 col-form-label text-lg-right">فرع بنك العميل :</label>
                 <div class="col-lg-5">
-                    <select name="city_id" id="city_id" class="form-control">
+                    <select name="bank_id" id="bank_id" class="form-control">
                         <option>اختر فرع العميل </option>
                         @foreach ($branch as $item)
                             <option value="{{$item->id}}"> {{$item->name}}</option>
