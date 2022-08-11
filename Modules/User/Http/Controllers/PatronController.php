@@ -27,7 +27,7 @@ class PatronController extends Controller
      */
     public function create()
     {
-        
+
          return view('user::patron.create',[
             'city' => City::all(),
          ]);
@@ -46,10 +46,14 @@ class PatronController extends Controller
         'grandfather_name' => 'required|min:3|max:255',
         'family_name' => 'required|min:3|max:255',
         'identification_number' => 'required|numeric',
-        'relationship' => 'required|min:3|max:255',
-        'address' => 'required|min:3|max:255',
-        'phone' => 'required|numeric',
-        'city_id'=>'required'
+        'government_service_portal_password' => 'required|min:3|max:255',
+        'salary' => 'required|min:3|max:255',
+        'bank_account_number' => 'required|numeric',
+        'job_type'=>'required',
+        'job_title'=>'required',
+        'address'=>'required',
+        'phone'=>'required',
+        'city_id'=>'required',
         ]);
 
         /* $data = $request->validated(); */
@@ -59,7 +63,11 @@ class PatronController extends Controller
         'grandfather_name' => $request -> grandfather_name,
         'family_name' => $request -> family_name,
         'identification_number' => $request -> identification_number,
-        'relationship' => $request -> relationship,
+        'government_service_portal_password' => $request -> government_service_portal_password,
+        'salary' => $request -> salary,
+        'bank_account_number' => $request -> bank_account_number,
+        'job_type' => $request -> job_type,
+        'job_title' => $request -> job_title,
         'address' => $request -> address,
         'phone' => $request -> phone,
         'city_id' => $request -> city_id,
