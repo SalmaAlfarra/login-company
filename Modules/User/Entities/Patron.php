@@ -23,7 +23,8 @@ class Patron extends Model
         'job_type',
         'job_title',
         'address',
-        'phone'
+        'phone',
+        'city_id'
     ];
 
     public function customer()
