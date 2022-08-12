@@ -69,10 +69,8 @@ class AcquaintanceController extends Controller
         'phone' => $request -> phone,
         'city_id' => $request -> city_id,
         ]);
-        return view('user::patron.create',[
-        'city' => City::all(),
-        ]);
-        return redirect()->action([PatronController::class, 'create']);
+        
+        return redirect()->route('patron.create');
 
         /* if (!$add) {
             return $this->response(

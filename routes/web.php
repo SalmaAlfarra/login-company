@@ -40,15 +40,15 @@ Route::resource('patron', PatronController::class);
 
 
 Route::get('/account', function () {
-    return view('status::account.create');
+    return view('status::account.create')->name('account');
 });
 
 Route::get('/delegate', function () {
-    return view('user::delegate.create');
+    return view('user::delegate.create')->name('delegate');
 });
 
 Route::get('/supplier', function () {
-    return view('user::supplier.create');
+    return view('user::supplier.create')->name('supplier');
 });
 
 Route::get('/legal-procedurs', function () {

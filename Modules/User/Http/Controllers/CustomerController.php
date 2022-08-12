@@ -84,7 +84,8 @@ class CustomerController extends Controller
             'branch_id' => $request->branch_id,
             'identification_issuance_date' => $request->identification_issuance_date
         ]);
-       return redirect()->action([AcquaintanceController::class, 'create']);
+       
+       return redirect()->route('acquaintance.create');
     }
 
     /**

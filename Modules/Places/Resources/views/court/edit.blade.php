@@ -5,14 +5,14 @@
             <h3 class="card-title">المحاكم</h3>
         </div>
         <!--begin::Form-->
-        <form class="form" action="{{route('court.update')}}" method="POST" >
+        <form class="form" action="{{route('court.update',$court->id)}}" method="POST" >
             @method(PUT)
             @csrf
             <div class="card-body">
                 <div class="form-group row mt-4">
                     <label class="col-lg-1 col-form-label text-lg-right">اسم المحكمة : </label>
                     <div class="col-lg-6">
-                        <input type="text" value="" class="form-control form-control-solid" name="name" placeholder="اسم المحكمة">
+                        <input type="text" value="{{$court->name}}" class="form-control form-control-solid" name="name" placeholder="اسم المحكمة">
                         <span class="form-text text-muted">ادخل اسم المحكمة</span>
                     </div>
                 </div>
@@ -20,7 +20,7 @@
                 <div class="form-group row mt-4">
                     <label class="col-lg-1 col-form-label text-lg-right">عنوان المحكمة : </label>
                     <div class="col-lg-5">
-                        <input type="text" value="" name="address" class="form-control form-control-solid" placeholder="عنوان المحكمة ">
+                        <input type="text" value="{{$court->adderss}}" name="address" class="form-control form-control-solid" placeholder="عنوان المحكمة ">
                         <span class="form-text text-muted">أدخل عنوان المحكمة </span>
                     </div>
                 </div>
@@ -28,7 +28,7 @@
                 <div class="form-group row mt-4">
                     <label class="col-lg-1 col-form-label text-lg-right">رقم هاتف المحكمة : </label>
                     <div class="col-lg-5">
-                        <input type="phone" name="phone" value="" class="form-control form-control-solid" placeholder=" رقم الهاتف ">
+                        <input type="phone" name="phone" value="{{$court->phone}}" class="form-control form-control-solid" placeholder=" رقم الهاتف ">
                         <span class="form-text text-muted">أدخل هاتف المحكمة </span>
                     </div>
                 </div>

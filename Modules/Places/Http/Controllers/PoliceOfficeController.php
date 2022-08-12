@@ -29,10 +29,7 @@ class PoliceOfficeController extends Controller
         $policeoffices = PoliceOffice::all();
 
         return view(
-            'places::police-office.create',
-            compact(
-                'policeoffices'
-            )
+            'places::police-office.create'
         );
     }
 
@@ -65,7 +62,7 @@ class PoliceOfficeController extends Controller
 
         $data['image'] = 'policeoffices/' . $imageName; */
 
-        $add = PoliceOffice::create($data);
+        /* $add = PoliceOffice::create($data);
         if (!$add) {
             return $this->response(
                 'error'
@@ -75,7 +72,7 @@ class PoliceOfficeController extends Controller
         return $this->response(
             'added',
             route('places::police-office.create')
-        );
+        ); */
     }
 
     /**
@@ -93,10 +90,14 @@ class PoliceOfficeController extends Controller
      * @param int $id
      * @return Renderable
      */
-    public function edit($id)
+    public function edit(PoliceOffice $policeOffice)
     {
-        $policeoffice = PoliceOffice::findOrFail($id);
-        return view('places::edit',compact('policeoffice'));
+        /* $policeoffice = PoliceOffice::findOrFail($id); */
+        return view('places::police-office.edit',[
+
+            'policeoffice'=>$policeOffice,
+
+        ]);
     }
 
     /**

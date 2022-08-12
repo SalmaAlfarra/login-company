@@ -5,7 +5,7 @@
             <h3 class="card-title">مراكز الشرطة</h3>
         </div>
         <!--begin::Form-->
-        <form class="form" action="{{route('police-office.update')}}" method="POST">
+        <form class="form" action="{{route('police-office.update',$policeoffice->id)}}" method="POST">
             @method('PUT')
             @csrf
             <div class="card-body">
