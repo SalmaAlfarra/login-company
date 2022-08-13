@@ -7,7 +7,8 @@ use Modules\Places\Entities\City;
 use Modules\User\Entities\Patron;
 use Illuminate\Routing\Controller;
 use Illuminate\Contracts\Support\Renderable;
-use Modules\User\Http\Requests\Patron\CreatePatronRequest;
+use Modules\Places\Entities\Bank;
+use Modules\Places\Entities\Branch;
 
 class PatronController extends Controller
 {
@@ -26,9 +27,13 @@ class PatronController extends Controller
      */
     public function create()
     {
-
+        $city   =  City::all();
+        $branch =  Branch::all();
+        $bank   =  Bank::all();
         return view('user::patron.create', [
-            'city' => City::all(),
+            'city'   => $city,
+            'branch' => $branch,
+            'bank'   => $bank
         ]);
     }
 
@@ -37,7 +42,7 @@ class PatronController extends Controller
      * @param Request $request
      * @return Renderable
      */
-    public function store(CreatePatronRequest $request)
+    public function store(Request $request)
     {
         $request->validate([
             'first_name' => 'required|min:3|max:255',
@@ -46,7 +51,7 @@ class PatronController extends Controller
             'family_name' => 'required|min:3|max:255',
             'identification_number' => 'required|numeric',
             'government_service_portal_password' => 'required|min:3|max:255',
-            'salary' => 'required|min:3|max:255',
+            'salary' => 'required',
             'bank_account_number' => 'required|numeric',
             'job_type' => 'required',
             'job_title' => 'required',

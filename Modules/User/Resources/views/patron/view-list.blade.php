@@ -52,7 +52,7 @@
                         serverSide: true,
                         ajax: "{{ route('court.index') }}",
                         /*  "language": {
-                             "url": "{{ asset('datatableLang/'.app()->getLocale() . '.json') }}"
+                            "url": "{{ asset('datatableLang/'.app()->getLocale() . '.json') }}"
                          }, */
                         columns: [{
                                 data: 'id',

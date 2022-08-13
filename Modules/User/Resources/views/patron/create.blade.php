@@ -161,7 +161,7 @@
                                 <option value="{{$item->id}}"> {{$item->name}}</option>
                             @endforeach
                         </select>
-                        <span class="form-text text-muted">اختر البنك </span>
+                        <span class="form-text text-muted">اختر فرع بنك الكفيل </span>
                     </div>
                 </div>
             </div>
