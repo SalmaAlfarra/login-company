@@ -15,22 +15,6 @@
                         <span class="form-text text-muted">ادخل اسم المحكمة</span>
                     </div>
                 </div>
-                <div class="separator separator-dashed my-10"></div>
-                <div class="form-group row mt-4">
-                    <label class="col-lg-1 col-form-label text-lg-right">عنوان المحكمة : </label>
-                    <div class="col-lg-5">
-                        <input type="text" name="address" class="form-control form-control-solid" placeholder="عنوان المحكمة ">
-                        <span class="form-text text-muted">أدخل عنوان المحكمة </span>
-                    </div>
-                </div>
-                <div class="separator separator-dashed my-10"></div>
-                <div class="form-group row mt-4">
-                    <label class="col-lg-1 col-form-label text-lg-right">رقم هاتف المحكمة : </label>
-                    <div class="col-lg-5">
-                        <input type="phone" name="phone" class="form-control form-control-solid" placeholder=" رقم الهاتف ">
-                        <span class="form-text text-muted">أدخل هاتف المحكمة </span>
-                    </div>
-                </div>
             </div>
             <div class="card-footer">
                 <div class="row">

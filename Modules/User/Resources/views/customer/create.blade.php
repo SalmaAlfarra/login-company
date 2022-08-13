@@ -215,7 +215,7 @@
             </div>
         </div>
         <div class="card-body">
-            <h3 class="card-title">بيانات حساب لعميل البنكية</h3>
+            <h3 class="card-title">بيانات حساب العميل البنكية</h3>
             <div class="form-group row mt-4">
                 <label class="col-lg-1 col-form-label text-lg-right">رقم الحساب : </label>
                 <div class="col-lg-5">
@@ -227,7 +227,7 @@
             <div class="form-group row mt-4">
                 <label class="col-lg-1 col-form-label text-lg-right">قيمة المراتب :</label>
                 <div class="col-lg-5">
-                    <input type="number" name="salary" class="form-control form-control-solid" placeholder="قيمة المراتب ">
+                    <input type="number" name="salary" class="form-control form-control-solid" placeholder="قيمة المرتب ">
                     <span class="form-text text-muted">أدخل قيمة مراتب العميل </span>
                 </div>
             </div>
@@ -248,7 +248,7 @@
             <div class="form-group row mt-4">
                 <label class="col-lg-1 col-form-label text-lg-right">فرع بنك العميل :</label>
                 <div class="col-lg-5">
-                    <select name="branch_id" id="bank_id" class="form-control">
+                    <select name="branch_id" id="branch_id" class="form-control">
                         <option>اختر   بنك العميل </option>
                         @foreach ($branch as $item)
                             <option value="{{$item->id}}"> {{$item->name}}</option>
@@ -258,7 +258,6 @@
                 </div>
             </div>
         </div>
-
         <div class="card-footer">
             <div class="row">
                 <div class="col-lg-5"></div>

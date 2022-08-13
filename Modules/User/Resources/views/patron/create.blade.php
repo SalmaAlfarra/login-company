@@ -30,8 +30,16 @@
                 </div>
             </div>
             <div class="separator separator-dashed my-10"></div>
+            <div class="form-group row mt-4">
+                <label class="col-lg-1 col-form-label text-lg-right"> عنوان الكفيل : </label>
+                <div class="col-lg-5">
+                    <input type="text" name="address" class="form-control form-control-solid" placeholder=" رقم العنوان ">
+                    <span class="form-text text-muted">أدخل عنوان الكفيل </span>
+                </div>
+            </div>
+            <div class="separator separator-dashed my-10"></div>
             <div class="form-group row">
-                <label class="col-lg-1 col-form-label text-lg-right">الحالة الإجتماعية :</label>
+                <label class="col-lg-1 col-form-label text-lg-right"> نوع الكفالة :</label>
                 <div class="col-lg-3">
                     <div class="checkbox-inline col-lg-1 col-form-label text-lg-right">
                         <label class="checkbox checkbox-success">
@@ -44,15 +52,15 @@
                         <input type="checkbox" name="Checkboxes5" >
                         <span></span>أخرى</label>
                     </div>
-                    <span class="form-text text-muted">اختر الحالة الإجتماعية </span>
+                    <span class="form-text text-muted">اختر نوع الكفالة  </span>
                 </div>
             </div>
             <div class="separator separator-dashed my-10"></div>
             <div class="form-group row mt-4">
                 <label class="col-lg-1 col-form-label text-lg-right">رقم الجوال : </label>
                 <div class="col-lg-5">
-                    <input type="phone" class="form-control form-control-solid" placeholder=" رقم الجوال ">
-                    <span class="form-text text-muted">أدخل جوال الموزع </span>
+                    <input type="phone" name="phone" class="form-control form-control-solid" placeholder=" رقم الجوال ">
+                    <span class="form-text text-muted">أدخل جوال الكفيل </span>
                 </div>
             </div>
             <div class="separator separator-dashed my-10"></div>
@@ -60,42 +68,102 @@
                 <label class="col-lg-1 col-form-label text-lg-right">رقم الهوية : </label>
                 <div class="col-lg-2.5">
                     <input type="text" name="identification_number" class="form-control form-control-solid" placeholder="رقم الهوية ">
-                    <span class="form-text text-muted">ادخل رقم هوية العميل</span>
-                </div>
-                <label class="col-lg-1 col-form-label text-lg-right">تاريخ الإصدار :</label>
-                <div class="col-lg-2">
-                    <div class="input-group date">
-                        <input type="text" class="form-control form-control-solid" id="kt_datepicker_2" readonly="readonly" placeholder="تاريخ إصدار الهوية ">
-                        <div class="input-group-append">
-                            <span class="input-group-text">
-                                <i class="la la-calendar-check-o"></i>
-                            </span>
-                        </div>
-                    </div>
-                    <span class="form-text text-muted">ادخل تاريخ هوية إصدار الهوية</span>
+                    <span class="form-text text-muted">ادخل رقم هوية الكفيل</span>
                 </div>
                 <label class="col-lg-1 col-form-label text-lg-right">رقم الدخول الموحد:</label>
                 <div class="col-lg-2.5">
-                    <input type="text" class="form-control form-control-solid" name="government_service_portal_password" placeholder="ؤقم الدخول الموحد ">
+                    <input type="text" class="form-control form-control-solid" name="government_service_portal_password" placeholder="رقم الدخول الموحد ">
                     <span class="form-text text-muted">ادخل رقم الدخول الموحد</span>
                 </div>
+            </div>
+                <div class="separator separator-dashed my-10"></div>
                 <div class="form-group row mt-4">
-                <label class="col-lg-1 col-form-label text-lg-right">المدينة</label>
-                <div class="col-lg-5">
-                    <select name="city_id" id="city_id" class="form-control">
-                        <option>اختر مدينة</option>
-                        @foreach ($city as $item)
-                            <option value="{{$item->id}}"> {{$item->name}}</option>
-                        @endforeach
-                    </select>
-                    <span class="form-text text-muted">اختر المدينة </span>
+                    <label class="col-lg-1 col-form-label text-lg-right">المدينة</label>
+                    <div class="col-lg-5">
+                        <select name="city_id" id="city_id" class="form-control">
+                            <option>اختر مدينة</option>
+                            @foreach ($city as $item)
+                                <option value="{{$item->id}}"> {{$item->name}}</option>
+                            @endforeach
+                        </select>
+                        <span class="form-text text-muted">اختر المدينة </span>
+                    </div>
+                </div>
+                <div class="separator separator-dashed my-10"></div>
+            <div class="form-group row">
+                <label class="col-lg-1 col-form-label text-lg-right">جهة العمل :</label>
+                <div class="col-lg-3">
+                    <input type="text" name="employer" class="form-control form-control-solid" placeholder="جهة العمل">
+                    <span class="form-text text-muted">أدخل جهة العمل </span>
+                </div>
+                <label class="col-lg-1 col-form-label text-lg-right">المسمى الوظيفي :</label>
+                <div class="col-lg-3">
+                    <input type="text" name="job_title" class="form-control form-control-solid" placeholder="المسمى الوظيفي">
+                    <span class="form-text text-muted">أدخل المسمى الوظيفي</span>
                 </div>
             </div>
-
-                    <span class="form-text text-muted">ادخل تاريخ  ميلاد العميل </span>
+            <div class="separator separator-dashed my-10"></div>
+            <div class="form-group row">
+                <label class="col-lg-1 col-form-label text-lg-right">نوع الوظيفة :</label>
+                <div class="col-lg-3">
+                    <div class="radio-inline col-lg-1 col-form-label text-lg-right">
+                        <label class="radio radio-success">
+                        <input type="radio" name="job_type">
+                        <span></span>حكومية</label>
+                        <label class="radio radio-success">
+                        <input type="radio" name="job_type" >
+                        <span></span>مدنية</label>
+                        <label class="radio radio-success">
+                        <input type="radio" name="job_type" >
+                        <span></span>أخرى</label>
+                    </div>
+                    <span class="form-text text-muted">أدخل نوع الوظيفة</span>
                 </div>
             </div>
-        </div>
+            <div class="card-body">
+                <h3 class="card-title">بيانات حساب الكفيل البنكية</h3>
+                <div class="form-group row mt-4">
+                    <label class="col-lg-1 col-form-label text-lg-right">رقم الحساب : </label>
+                    <div class="col-lg-5">
+                        <input type="number" name="bank_account_number" class="form-control form-control-solid" placeholder=" رقم الحساب ">
+                        <span class="form-text text-muted">أدخل حساب الكفيل </span>
+                    </div>
+                </div>
+                <div class="separator separator-dashed my-10"></div>
+                <div class="form-group row mt-4">
+                    <label class="col-lg-1 col-form-label text-lg-right">قيمة المراتب :</label>
+                    <div class="col-lg-5">
+                        <input type="number" name="salary" class="form-control form-control-solid" placeholder="قيمة المرتب ">
+                        <span class="form-text text-muted">أدخل قيمة مراتب الكفيل </span>
+                    </div>
+                </div>
+                <div class="separator separator-dashed my-10"></div>
+                <div class="form-group row mt-4">
+                    <label class="col-lg-1 col-form-label text-lg-right">بنك الكفيل : </label>
+                    <div class="col-lg-5">
+                        <select name="bank_id" id="bank_id" class="form-control">
+                            <option>اختر بنك الكفيل</option>
+                            @foreach ($bank as $item)
+                                <option value="{{$item->id}}"> {{$item->name}}</option>
+                            @endforeach
+                        </select>
+                        <span class="form-text text-muted">اختر بنك الكفيل : </span>
+                    </div>
+                </div>
+                <div class="separator separator-dashed my-10"></div>
+                <div class="form-group row mt-4">
+                    <label class="col-lg-1 col-form-label text-lg-right">فرع بنك الكفيل :</label>
+                    <div class="col-lg-5">
+                        <select name="branch_id" id="branch_id" class="form-control">
+                            <option>اختر   بنك الكفيل </option>
+                            @foreach ($branch as $item)
+                                <option value="{{$item->id}}"> {{$item->name}}</option>
+                            @endforeach
+                        </select>
+                        <span class="form-text text-muted">اختر البنك </span>
+                    </div>
+                </div>
+            </div>
         <div class="card-footer">
             <div class="row">
                 <div class="col-lg-5"></div>
