@@ -35,6 +35,7 @@ License: You must have a valid license purchased only from themeforest(the above
 		<link href="{{asset('admin/assets/css/themes/layout/header/menu/dark.css')}}" rel="stylesheet" type="text/css" />
 		<link href="{{asset('admin/assets/css/themes/layout/brand/dark.css')}}" rel="stylesheet" type="text/css" />
 		<link href="{{asset('admin/assets/css/themes/layout/aside/dark.css')}}" rel="stylesheet" type="text/css" />
+        <link href="{{asset('assets/plugins/custom/datatables/datatables.bundle.css')}}" rel="stylesheet" type="text/css" />
         @yield('css')
     <style>
         .media-image {
@@ -173,6 +174,8 @@ License: You must have a valid license purchased only from themeforest(the above
         <script src="{{ asset('assets/admin/general/js/scripts/pace.min.js') }}"></script>
         <script src="{{ asset('assets/admin/general/js/scripts/common.js') }}"></script>
         <script src="{{ asset('assets/admin/general/js/scripts/datatable.js') }}"></script>
+        <script src="{{ asset('assets/js/pages/crud/datatables/basic/basic.js')}}"></script>
+
         {{-- @include("base::admin.uploader.index") --}}
         <script>
         @if(Session::has('data'))
@@ -202,3 +205,5 @@ License: You must have a valid license purchased only from themeforest(the above
 	</body>
 	<!--end::Body-->
 </html>
+
+
