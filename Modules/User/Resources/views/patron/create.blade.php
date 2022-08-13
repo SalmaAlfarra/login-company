@@ -5,7 +5,8 @@
         <h3 class="card-title">البيانات الشخصية للكفيل </h3>
     </div>
     <!--begin::Form-->
-    <form class="form">
+    <form class="form" action="{{route('patron.store')}}" method="POST">
+        @csrf
         <div class="card-body">
             <div class="form-group row mt-4">
                 <label class="col-lg-1 col-form-label text-lg-right">الاسم الشخصي : </label>
