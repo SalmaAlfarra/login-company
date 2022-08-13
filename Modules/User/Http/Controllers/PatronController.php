@@ -2,7 +2,6 @@
 
 namespace Modules\User\Http\Controllers;
 
-use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Modules\Places\Entities\City;
 use Modules\User\Entities\Patron;
@@ -28,9 +27,9 @@ class PatronController extends Controller
     public function create()
     {
 
-         return view('user::patron.create',[
+        return view('user::patron.create', [
             'city' => City::all(),
-         ]);
+        ]);
     }
 
     /**
@@ -41,36 +40,36 @@ class PatronController extends Controller
     public function store(CreatePatronRequest $request)
     {
         $request->validate([
-        'first_name' => 'required|min:3|max:255',
-        'father_name' => 'required|min:3|max:255',
-        'grandfather_name' => 'required|min:3|max:255',
-        'family_name' => 'required|min:3|max:255',
-        'identification_number' => 'required|numeric',
-        'government_service_portal_password' => 'required|min:3|max:255',
-        'salary' => 'required|min:3|max:255',
-        'bank_account_number' => 'required|numeric',
-        'job_type'=>'required',
-        'job_title'=>'required',
-        'address'=>'required',
-        'phone'=>'required',
-        'city_id'=>'required',
+            'first_name' => 'required|min:3|max:255',
+            'father_name' => 'required|min:3|max:255',
+            'grandfather_name' => 'required|min:3|max:255',
+            'family_name' => 'required|min:3|max:255',
+            'identification_number' => 'required|numeric',
+            'government_service_portal_password' => 'required|min:3|max:255',
+            'salary' => 'required|min:3|max:255',
+            'bank_account_number' => 'required|numeric',
+            'job_type' => 'required',
+            'job_title' => 'required',
+            'address' => 'required',
+            'phone' => 'required',
+            'city_id' => 'required',
         ]);
 
         /* $data = $request->validated(); */
         $add = Patron::create([
-        'first_name' => $request -> first_name,
-        'father_name' => $request -> father_name,
-        'grandfather_name' => $request -> grandfather_name,
-        'family_name' => $request -> family_name,
-        'identification_number' => $request -> identification_number,
-        'government_service_portal_password' => $request -> government_service_portal_password,
-        'salary' => $request -> salary,
-        'bank_account_number' => $request -> bank_account_number,
-        'job_type' => $request -> job_type,
-        'job_title' => $request -> job_title,
-        'address' => $request -> address,
-        'phone' => $request -> phone,
-        'city_id' => $request -> city_id,
+            'first_name' => $request->first_name,
+            'father_name' => $request->father_name,
+            'grandfather_name' => $request->grandfather_name,
+            'family_name' => $request->family_name,
+            'identification_number' => $request->identification_number,
+            'government_service_portal_password' => $request->government_service_portal_password,
+            'salary' => $request->salary,
+            'bank_account_number' => $request->bank_account_number,
+            'job_type' => $request->job_type,
+            'job_title' => $request->job_title,
+            'address' => $request->address,
+            'phone' => $request->phone,
+            'city_id' => $request->city_id,
         ]);
     }
 

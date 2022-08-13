@@ -2,14 +2,11 @@
 
 namespace Modules\User\Http\Controllers;
 
-use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Modules\Places\Entities\City;
 use Illuminate\Routing\Controller;
 use Modules\User\Entities\Acquaintance;
 use Illuminate\Contracts\Support\Renderable;
-use Modules\User\Http\Controllers\PatronController;
-use Modules\User\Http\Requests\Acquaintance\CreateAcquaintanceRequest;
 
 class AcquaintanceController extends Controller
 {
@@ -31,10 +28,12 @@ class AcquaintanceController extends Controller
         $acquaintances = Acquaintance::all();
 
         return view(
-            'user::acquaintance.create', [
-            'city'  => City::all(),
-            'acqua' => $acquaintances
-            ]);
+            'user::acquaintance.create',
+            [
+                'city'  => City::all(),
+                'acqua' => $acquaintances
+            ]
+        );
     }
 
     /**
@@ -46,30 +45,30 @@ class AcquaintanceController extends Controller
     {
         /* dd($request); */
         $request->validate([
-        'first_name' => 'required|min:3|max:255',
-        'father_name' => 'required|min:3|max:255',
-        'grandfather_name' => 'required|min:3|max:255',
-        'family_name' => 'required|min:3|max:255',
-        'identification_number' => 'required|numeric',
-        'relationship' => 'required|min:3|max:255',
-        'address' => 'required|min:3|max:255',
-        'phone' => 'required|numeric',
-        'city_id'=>'required'
+            'first_name' => 'required|min:3|max:255',
+            'father_name' => 'required|min:3|max:255',
+            'grandfather_name' => 'required|min:3|max:255',
+            'family_name' => 'required|min:3|max:255',
+            'identification_number' => 'required|numeric',
+            'relationship' => 'required|min:3|max:255',
+            'address' => 'required|min:3|max:255',
+            'phone' => 'required|numeric',
+            'city_id' => 'required'
         ]);
 
         /* $data = $request->validated(); */
         $add = Acquaintance::create([
-        'first_name' => $request -> first_name,
-        'father_name' => $request -> father_name,
-        'grandfather_name' => $request -> grandfather_name,
-        'family_name' => $request -> family_name,
-        'identification_number' => $request -> identification_number,
-        'relationship' => $request -> relationship,
-        'address' => $request -> address,
-        'phone' => $request -> phone,
-        'city_id' => $request -> city_id,
+            'first_name' => $request->first_name,
+            'father_name' => $request->father_name,
+            'grandfather_name' => $request->grandfather_name,
+            'family_name' => $request->family_name,
+            'identification_number' => $request->identification_number,
+            'relationship' => $request->relationship,
+            'address' => $request->address,
+            'phone' => $request->phone,
+            'city_id' => $request->city_id,
         ]);
-        
+
         return redirect()->route('patron.create');
 
         /* if (!$add) {
@@ -102,8 +101,8 @@ class AcquaintanceController extends Controller
     public function edit($id)
     {
         $acquaintance = Acquaintance::findOrFail($id);
-        return view('user::edit',[
-            'acquaintance' => $acquaintances,
+        return view('user::edit', [
+            'acquaintance' => $acquaintance,
             'city' => City::all(),
 
         ]);
