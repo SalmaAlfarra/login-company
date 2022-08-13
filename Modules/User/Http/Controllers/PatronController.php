@@ -71,6 +71,7 @@ class PatronController extends Controller
             'phone' => $request->phone,
             'city_id' => $request->city_id,
         ]);
+        return view("user::patron.create");
     }
 
     /**
