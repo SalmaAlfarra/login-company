@@ -9,6 +9,19 @@
         @csrf
         <div class="card-body">
             <div class="form-group row mt-4">
+                <label class="col-lg-1 col-form-label text-lg-right">اسم العميل</label>
+                <div class="col-lg-5">
+                    <select name="customer_id" id="customer_id" class="form-control">
+                        <option>اختر العميل</option>
+                        @foreach ($customer as $item)
+                            <option value="{{$item->id}}"> {{$item->first_name}}</option>
+                        @endforeach
+                    </select>
+                    <span class="form-text text-muted">اختر العميل </span>
+                </div>
+            </div>
+                <div class="separator separator-dashed my-10"></div>
+            <div class="form-group row mt-4">
                 <label class="col-lg-1 col-form-label text-lg-right">الاسم الشخصي : </label>
                 <div class="col-lg-2.5">
                     <input type="text" name="first_name" class="form-control form-control-solid" placeholder="الاسم الشخصي">
@@ -77,20 +90,20 @@
                     <span class="form-text text-muted">ادخل رقم الدخول الموحد</span>
                 </div>
             </div>
-                <div class="separator separator-dashed my-10"></div>
-                <div class="form-group row mt-4">
-                    <label class="col-lg-1 col-form-label text-lg-right">المدينة</label>
-                    <div class="col-lg-5">
-                        <select name="city_id" id="city_id" class="form-control">
-                            <option>اختر مدينة</option>
-                            @foreach ($city as $item)
-                                <option value="{{$item->id}}"> {{$item->name}}</option>
-                            @endforeach
-                        </select>
-                        <span class="form-text text-muted">اختر المدينة </span>
-                    </div>
+            <div class="separator separator-dashed my-10"></div>
+            <div class="form-group row mt-4">
+                <label class="col-lg-1 col-form-label text-lg-right">المدينة</label>
+                <div class="col-lg-5">
+                    <select name="city_id" id="city_id" class="form-control">
+                        <option>اختر مدينة</option>
+                        @foreach ($city as $item)
+                            <option value="{{$item->id}}"> {{$item->name}}</option>
+                        @endforeach
+                    </select>
+                    <span class="form-text text-muted">اختر المدينة </span>
                 </div>
-                <div class="separator separator-dashed my-10"></div>
+            </div>
+            <div class="separator separator-dashed my-10"></div>
             <div class="form-group row">
                 <label class="col-lg-1 col-form-label text-lg-right">جهة العمل :</label>
                 <div class="col-lg-3">
@@ -121,8 +134,12 @@
                     <span class="form-text text-muted">أدخل نوع الوظيفة</span>
                 </div>
             </div>
-            <div class="card-body">
+        </div>
+        <div class="card card-custom example example-compact">
+            <div class="card-header">
                 <h3 class="card-title">بيانات حساب الكفيل البنكية</h3>
+            </div>
+            <div class="card-body">
                 <div class="form-group row mt-4">
                     <label class="col-lg-1 col-form-label text-lg-right">رقم الحساب : </label>
                     <div class="col-lg-5">
@@ -165,12 +182,13 @@
                     </div>
                 </div>
             </div>
-        <div class="card-footer">
-            <div class="row">
-                <div class="col-lg-5"></div>
-                <div class="col-lg-7">
-                    <button type="submit" class="btn btn-primary mr-2">التالي</button>
-                    <button type="reset" class="btn btn-secondary">إلغاء</button>
+            <div class="card-footer">
+                <div class="row">
+                    <div class="col-lg-5"></div>
+                    <div class="col-lg-7">
+                        <button type="submit" class="btn btn-primary mr-2">التالي</button>
+                        <button type="reset" class="btn btn-secondary">إلغاء</button>
+                    </div>
                 </div>
             </div>
         </div>

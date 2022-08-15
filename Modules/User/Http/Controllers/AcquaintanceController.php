@@ -7,6 +7,7 @@ use Modules\Places\Entities\City;
 use Illuminate\Routing\Controller;
 use Modules\User\Entities\Acquaintance;
 use Illuminate\Contracts\Support\Renderable;
+use Modules\User\Entities\Customer;
 
 class AcquaintanceController extends Controller
 {
@@ -31,7 +32,8 @@ class AcquaintanceController extends Controller
             'user::acquaintance.create',
             [
                 'city'  => City::all(),
-                'acqua' => $acquaintances
+                'customer'  => Customer::all(),
+                'acqua' => $acquaintances,
             ]
         );
     }
@@ -53,7 +55,8 @@ class AcquaintanceController extends Controller
             'relationship' => 'required|min:3|max:255',
             'address' => 'required|min:3|max:255',
             'phone' => 'required|numeric',
-            'city_id' => 'required'
+            'city_id' => 'required',
+            'customer_id' => 'required'
         ]);
 
         /* $data = $request->validated(); */
@@ -66,7 +69,6 @@ class AcquaintanceController extends Controller
             'relationship' => $request->relationship,
             'address' => $request->address,
             'phone' => $request->phone,
-            'city_id' => $request->city_id,
         ]);
 
         return redirect()->route('patron.create');

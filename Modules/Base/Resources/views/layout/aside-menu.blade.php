@@ -10,7 +10,7 @@
                 </a>
             </li>
             <li class="menu-item menu-item-submenu" aria-haspopup="true" data-menu-toggle="hover">
-                <a href="javascript:;" class="menu-link menu-toggle">
+                <a href="#" class="menu-link menu-toggle">
                     <i class="menu-icon flaticon-customer"></i>
                     <span class="menu-text">العملاء</span>
                     <i class="menu-arrow"></i>
@@ -19,7 +19,7 @@
                     <i class="menu-arrow"></i>
                     <ul class="menu-subnav">
                         <li class="menu-item menu-item-submenu" aria-haspopup="true" data-menu-toggle="hover">
-                            <a href="#" class="menu-link menu-toggle">
+                            <a href="{{route('customer.create')}}" class="menu-link">
                                 <i class="menu-bullet menu-bullet-dot">
                                     <span></span>
                                 </i>
@@ -35,6 +35,68 @@
                                     <span></span>
                                 </i>
                                 <span class="menu-text">عرض كافة العملاء </span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </li>
+            <li class="menu-item menu-item-submenu" aria-haspopup="true" data-menu-toggle="hover">
+                <a href="#" class="menu-link menu-toggle">
+                    <i class="menu-icon flaticon-customer"></i>
+                    <span class="menu-text">المعرفون</span>
+                    <i class="menu-arrow"></i>
+                </a>
+                <div class="menu-submenu">
+                    <i class="menu-arrow"></i>
+                    <ul class="menu-subnav">
+                        <li class="menu-item menu-item-submenu" aria-haspopup="true" data-menu-toggle="hover">
+                            <a href="{{route('acquaintance.create')}}" class="menu-link">
+                                <i class="menu-bullet menu-bullet-dot">
+                                    <span></span>
+                                </i>
+                                <span class="menu-text">إضافة معرف جديد</span>
+                            </a>
+                            <div class="menu-submenu">
+                                <i class="menu-arrow"></i>
+                            </div>
+                        </li>
+                        <li class="menu-item" aria-haspopup="true">
+                            <a href="#" class="menu-link">
+                                <i class="menu-bullet menu-bullet-dot">
+                                    <span></span>
+                                </i>
+                                <span class="menu-text">عرض كافة المعرفون </span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </li>
+            <li class="menu-item menu-item-submenu" aria-haspopup="true" data-menu-toggle="hover">
+                <a href="#" class="menu-link menu-toggle">
+                    <i class="menu-icon flaticon-customer"></i>
+                    <span class="menu-text">الكفلاء</span>
+                    <i class="menu-arrow"></i>
+                </a>
+                <div class="menu-submenu">
+                    <i class="menu-arrow"></i>
+                    <ul class="menu-subnav">
+                        <li class="menu-item menu-item-submenu" aria-haspopup="true" data-menu-toggle="hover">
+                            <a href="{{route('patron.create')}}" class="menu-link">
+                                <i class="menu-bullet menu-bullet-dot">
+                                    <span></span>
+                                </i>
+                                <span class="menu-text">إضافة كفيل جديد</span>
+                            </a>
+                            <div class="menu-submenu">
+                                <i class="menu-arrow"></i>
+                            </div>
+                        </li>
+                        <li class="menu-item" aria-haspopup="true">
+                            <a href="#" class="menu-link">
+                                <i class="menu-bullet menu-bullet-dot">
+                                    <span></span>
+                                </i>
+                                <span class="menu-text">عرض كافة الكفلاء </span>
                             </a>
                         </li>
                     </ul>
@@ -236,7 +298,7 @@
                     <i class="menu-arrow"></i>
                     <ul class="menu-subnav">
                         <li class="menu-item menu-item-submenu" aria-haspopup="true" data-menu-toggle="hover">
-                            <a href="#" class="menu-link menu-toggle">
+                            <a href="{{route('police-office.create')}}" class="menu-link">
                                 <i class="menu-bullet menu-bullet-dot">
                                     <span></span>
                                 </i>
@@ -267,7 +329,7 @@
                     <i class="menu-arrow"></i>
                     <ul class="menu-subnav">
                         <li class="menu-item menu-item-submenu" aria-haspopup="true" data-menu-toggle="hover">
-                            <a href="#" class="menu-link menu-toggle">
+                            <a href="{{route('court.create')}}" class="menu-link">
                                 <i class="menu-bullet menu-bullet-dot">
                                     <span></span>
                                 </i>

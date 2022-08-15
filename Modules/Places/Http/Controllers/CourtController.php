@@ -8,7 +8,6 @@ use Illuminate\Routing\Controller;
 use Modules\Places\Entities\Court;
 use Yajra\DataTables\Facades\DataTables;
 use Illuminate\Contracts\Support\Renderable;
-use Modules\Places\Http\Requests\Court\CreateCourtRequest;
 
 class CourtController extends Controller
 {
@@ -17,17 +16,16 @@ class CourtController extends Controller
      * @return Renderable
      */
     public function index(Request $request)
-    {
-        {
-        if ($request->ajax()){
-        $data = Court::select([
-        'id',
-        'name',
-        ]);
-        return DataTables::of($data)
-        ->addIndexColumn()
-        ->addColumn('action', function ($row) {
-        $btn = ' <a href="' . route('court.edit', [$row->id]) . '" title="edit" class="dropdown-item"
+    { {
+            if ($request->ajax()) {
+                $data = Court::select([
+                    'id',
+                    'name',
+                ]);
+                return DataTables::of($data)
+                    ->addIndexColumn()
+                    ->addColumn('action', function ($row) {
+                        $btn = ' <a href="' . route('court.edit', [$row->id]) . '" title="edit" class="dropdown-item"
             style="display: contents">
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
                 stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
@@ -38,7 +36,7 @@ class CourtController extends Controller
                 <line x1="10" y1="12" x2="14" y2="12"></line>
             </svg></a>';
 
-        $btn = $btn . '<a href="javascript:void(0)" data-id="' . $row->id . '" title="delete" style="display: contents"
+                        $btn = $btn . '<a href="javascript:void(0)" data-id="' . $row->id . '" title="delete" style="display: contents"
             class="dropdown-item deletecourt"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
                 viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
                 stroke-linejoin="round" class="feather feather-trash-2 font-small-4 mr-50">
@@ -48,16 +46,14 @@ class CourtController extends Controller
                 <line x1="14" y1="11" x2="14" y2="17"></line>
             </svg></a>';
 
-        return $btn;
-        })
-            ->rawColumns(['court','action'])
-            ->make(true);
+                        return $btn;
+                    })
+                    ->rawColumns(['court', 'action'])
+                    ->make(true);
+            }
+
+            return view('places::court.view-list');
         }
-
-         return view('places::court.view-list');
-
-        }
-
     }
 
     /**
@@ -86,18 +82,18 @@ class CourtController extends Controller
     public function store(Request $request)
     {
         /* dd($request); */
-         $request->validate([
-         'name'    => 'required|min:3|max:255',
-         'address' => 'required|max:255',
-         'phone'   => 'required',
-         ]);
+        $request->validate([
+            'name'    => 'required|min:3|max:255',
+            'address' => 'required|max:255',
+            'phone'   => 'required',
+        ]);
 
-         $add = Court::create([
-         'name'    => $request->name,
-         'phone'   => $request->phone,
-         'address' => $request->adderss,
-         ]);
-       /*  $data = $request->validated();
+        $add = Court::create([
+            'name'    => $request->name,
+            'phone'   => $request->phone,
+            'address' => $request->adderss,
+        ]);
+        /*  $data = $request->validated();
         $image = $data['image'];
         $imageName = Carbon::now()->format('Y_m_d_h_i')  .  '.' . $image->getClientOriginalExtension();
         $image->storeAs('/courts', $imageName, ['disk' => 'public']);
@@ -125,7 +121,7 @@ class CourtController extends Controller
     public function show($id)
     {
         $court = Court::findOrFail($id);
-        return view('places::show',compact('court'));
+        return view('places::show', compact('court'));
     }
 
     /**
@@ -136,7 +132,7 @@ class CourtController extends Controller
     public function edit($id)
     {
         $court = Court::findOrFail($id);
-        return view('places::edit',compact('court'));
+        return view('places::edit', compact('court'));
     }
 
     /**
@@ -148,17 +144,17 @@ class CourtController extends Controller
     public function update(Request $request, $id)
     {
         $request->validate([
-        'name'    => 'required|min:3|max:255',
-        'phone'   => 'required',
-        'adderss' => 'required|max:255',
+            'name'    => 'required|min:3|max:255',
+            'phone'   => 'required',
+            'adderss' => 'required|max:255',
         ]);
 
         $court = Court::find($id);
 
         $edit = $court->update([
-        'name'    => $request->name,
-        'phone'   => $request->phone,
-        'adderss' => $request->adderss,
+            'name'    => $request->name,
+            'phone'   => $request->phone,
+            'adderss' => $request->adderss,
         ]);
     }
 

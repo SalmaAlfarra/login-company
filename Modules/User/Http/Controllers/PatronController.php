@@ -9,6 +9,7 @@ use Illuminate\Routing\Controller;
 use Illuminate\Contracts\Support\Renderable;
 use Modules\Places\Entities\Bank;
 use Modules\Places\Entities\Branch;
+use Modules\User\Entities\Customer;
 
 class PatronController extends Controller
 {
@@ -31,6 +32,7 @@ class PatronController extends Controller
         $branch =  Branch::all();
         $bank   =  Bank::all();
         return view('user::patron.create', [
+            'customer'  => Customer::all(),
             'city'   => $city,
             'branch' => $branch,
             'bank'   => $bank
@@ -58,6 +60,7 @@ class PatronController extends Controller
             'address' => 'required',
             'phone' => 'required',
             'city_id' => 'required',
+            'customer_id' => 'required'
         ]);
 
         /* $data = $request->validated(); */
@@ -76,7 +79,7 @@ class PatronController extends Controller
             'phone' => $request->phone,
             'city_id' => $request->city_id,
         ]);
-        return view("user::patron.create");
+        return view('status::report.home');
     }
 
     /**
