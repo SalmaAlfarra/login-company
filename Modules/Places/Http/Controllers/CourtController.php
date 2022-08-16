@@ -16,7 +16,7 @@ class CourtController extends Controller
      * @return Renderable
      */
     public function index(Request $request)
-    { {
+    {
             if ($request->ajax()) {
                 $data = Court::select([
                     'id',
@@ -53,7 +53,7 @@ class CourtController extends Controller
             }
 
             return view('places::court.view-list');
-        }
+
     }
 
     /**

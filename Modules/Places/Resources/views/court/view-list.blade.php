@@ -30,7 +30,19 @@
                 </section>
     @endsection
             @section('js')
-
+    <script src="{{asset('datatable/jquery.js')}}"></script>
+    <script src="{{asset('datatable/jquery.dataTables.min.js')}}"></script>
+    <script src="{{asset('datatable/datatables.bootstrap4.min.js')}}"></script>
+    <script src="{{asset('datatable/dataTables.responsive.min.js')}}"></script>
+    <script src="{{asset('datatable/responsive.bootstrap4.js')}}"></script>
+    <script src="{{asset('datatable/datatables.checkboxes.min.js')}}"></script>
+    <script src="{{asset('datatable/datatables.buttons.min.js')}}"></script>
+    <script src="{{asset('datatable/jszip.min.js')}}"></script>
+    <script src="{{asset('datatable/pdfmake.min.js')}}"></script>
+    <script src="{{asset('datatable/vfs_fonts.js')}}"></script>
+    <script src="{{asset('datatable/buttons.html5.min.js')}}"></script>
+    <script src="{{asset("datatable/buttons.print.min.js")}}"></script>
+    <script src="{{asset("datatable/dataTables.rowGroup.min.js")}}"></script>
             <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
             <!-- BEGIN: Theme JS-->
 
@@ -47,7 +59,7 @@
 
                     // ################## Index #################################
 
-                    var table = $('.user-list-table').DataTable({
+                    var table = $('.court-list-table').DataTable({
                         processing: true,
                         serverSide: true,
                         ajax: "{{ route('court.index') }}",
@@ -122,6 +134,10 @@
                         }).then((result) => {
                             if (result.isConfirmed) {
                                 $.ajax({
+                                   data: {
+               "_token": "{{ csrf_token() }}",
+                                "court_id": court_id
+                                         },
                                     type: "DELETE",
                                     url: "{{ route('court.store') }}" +
                                         '/' + court_id,
@@ -133,9 +149,9 @@
                                     }
                                 });
                                 Swal.fire(
-                                    '{{ __('messages.deleted!') }}',
-                                    '{{ __('messages.deleted successfully') }}',
-                                    '{{ __('messages.success') }}'
+                                    'هل انت متاكد من الحذف',
+                                    'تم الحذف بنجاح',
+                                   'تم الحذف بنجاح',
                                 )
                             }
                         });
