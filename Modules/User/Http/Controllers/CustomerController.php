@@ -53,58 +53,60 @@ class CustomerController extends Controller
     public function store(Request $request)
     {
         /* dd($request); */
-        /* bbbb  */
+
+         $request->validate([
+            'first_name'                         =>  'required|min:3|max:255',
+            'father_name'                        =>  'required|min:3|max:255',
+            'grandfather_name'                   =>  'required|min:3|max:255',
+            'family_name'                        =>  'required|min:3|max:255',
+            'identification_number'              =>  'required|max:255',
+            'government_service_portal_password' =>  'required|max:255',
+            'date_of_birth'                      =>  'required|max:255',
+            'job_title'                          =>  'required',
+            'job_type'                           =>  'required',
+            'employer'                           =>  'required',
+            'address'                            =>  'required|min:3|max:255',
+            'phone'                              =>  'required|numeric',
+            'city_id'                            =>  'required',
+            'partner_family_address'             =>  'required',
+            'partner_employer'                   =>  'required',
+            'partner_identification_number'      =>  'required',
+            'partner_family_name'                =>  'required',
+            'partner_grandfather_name'           =>  'required',
+            'partner_father_name'                =>  'required',
+            'partner_first_name'                 =>  'required',
+            'court_id'                           =>  'required',
+            'police_office_id'                   =>  'required',
+         ]);
+
         $add = Customer::create([
-            'first_name' => $request->first_name,
-            'father_name' => $request->father_name,
-            'grandfather_name' => $request->grandfather_name,
-            'family_name' => $request->family_name,
-            'identification_number' => $request->identification_number,
-            'government_service_portal_password' => $request->government_service_portal_password,
-            'date_of_birth' => $request->date_of_birth,
-            'job_title' => $request->job_title,
-            'job_type' => $request->job_type,
-            'employer' => $request->employer,
-            'address' => $request->address,
-            'phone' => $request->phone,
-            'city_id' => $request->city_id,
-            'partner_family_address' => $request->partner_family_address,
-            'partner_employer' => $request->partner_employer,
-            'partner_identification_number' => $request->partner_identification_number,
-            'partner_family_name' => $request->partner_family_name,
-            'partner_grandfather_name' => $request->partner_grandfather_name,
-            'partner_father_name' => $request->partner_father_name,
-            'partner_first_name' => $request->partner_first_name,
-            'court_id' => $request->court_id,
-            'police_office_id' => $request->police_office_id,
-            'branch_id' => $request->branch_id,
-            'identification_issuance_date' => $request->identification_issuance_date
+            'first_name'                         =>  $request->first_name,
+            'father_name'                        =>  $request->father_name,
+            'grandfather_name'                   =>  $request->grandfather_name,
+            'family_name'                        =>  $request->family_name,
+            'identification_number'              =>  $request->identification_number,
+            'government_service_portal_password' =>  $request->government_service_portal_password,
+            'date_of_birth'                      =>  $request->date_of_birth,
+            'job_title'                          =>  $request->job_title,
+            'job_type'                           =>  $request->job_type,
+            'employer'                           =>  $request->employer,
+            'address'                            =>  $request->address,
+            'phone'                              =>  $request->phone,
+            'city_id'                            =>  $request->city_id,
+            'partner_family_address'             =>  $request->partner_family_address,
+            'partner_employer'                   =>  $request->partner_employer,
+            'partner_identification_number'      =>  $request->partner_identification_number,
+            'partner_family_name'                =>  $request->partner_family_name,
+            'partner_grandfather_name'           =>  $request->partner_grandfather_name,
+            'partner_father_name'                =>  $request->partner_father_name,
+            'partner_first_name'                 =>  $request->partner_first_name,
+            'court_id'                           =>  $request->court_id,
+            'police_office_id'                   =>  $request->police_office_id,
+            'branch_id'                          =>  $request->branch_id,
+            'identification_issuance_date'       =>  $request->identification_issuance_date
         ]);
 
-        $request->validate([
-            'first_name' => 'required|min:3|max:255',
-            'father_name' => 'required|min:3|max:255',
-            'grandfather_name' => 'required|min:3|max:255',
-            'family_name' => 'required|min:3|max:255',
-            'identification_number' => 'required|max:255',
-            'government_service_portal_password' => 'required|max:255',
-            'date_of_birth' => 'required|max:255',
-            'job_title' => 'required',
-            'job_type' => 'required',
-            'employer' => 'required',
-            'address' => 'required|min:3|max:255',
-            'phone' => 'required|numeric',
-            'city_id' => 'required',
-            'partner_family_address' => 'required',
-            'partner_employer' => 'required',
-            'partner_identification_number' => 'required',
-            'partner_family_name' => 'required',
-            'partner_grandfather_name' => 'required',
-            'partner_father_name' => 'required',
-            'partner_first_name' => 'required',
-            'court_id' => 'required',
-            'police_office_id' => 'required',
-        ]);
+
 
         return redirect()->route('acquaintance.create');
     }
@@ -116,7 +118,10 @@ class CustomerController extends Controller
      */
     public function show($id)
     {
-        return view('user::show');
+        $customer = Customer::find($id);
+        return view('user::show',[
+            'customer'=>$customer,
+        ]);
     }
 
     /**
@@ -126,7 +131,23 @@ class CustomerController extends Controller
      */
     public function edit($id)
     {
-        return view('user::edit');
+        $city    = City::all();
+        $court   = Court::all();
+        $branch  = Branch::all();
+        $police  = PoliceOffice::all();
+        $bank    = Bank::all();
+        $customer = Customer::find($id);
+
+
+        return view('user::edit',[
+            'customer' => $customer,
+            'city'     => $city,
+            'court'    => $court,
+            'branch'   => $branch,
+            'police'   => $police,
+            'bank'     => $bank,
+            'customer' => $customer,
+        ]);
     }
 
     /**
@@ -138,34 +159,34 @@ class CustomerController extends Controller
     public function update(Request $request, $id)
     {
         $request->validate([
-            'first_name' => 'required|min:3|max:255',
-            'father_name' => 'required|min:3|max:255',
-            'grandfather_name' => 'required|min:3|max:255',
-            'family_name' => 'required|min:3|max:255',
-            'identification_number' => 'required|max:255',
-            'government_service_portal_password' => 'required|max:255',
-            'date_of_birth' => 'required|max:255',
-            'job_title' => 'required',
-            'job_type' => 'required',
-            'employer' => 'required',
-            'address' => 'required|min:3|max:255',
-            'phone' => 'required|numeric',
-            'city_id' => 'required',
-            'partner_family_address' => 'required',
-            'partner_employer' => 'required',
-            'partner_identification_number' => 'required',
-            'partner_family_name' => 'required',
-            'partner_grandfather_name' => 'required',
-            'partner_father_name' => 'required',
-            'partner_first_name' => 'required',
-            'court_id' => 'required',
-            'police_office_id' => 'required',
+            'first_name'                         =>  'required|min:3|max:255',
+            'father_name'                        =>  'required|min:3|max:255',
+            'grandfather_name'                   =>  'required|min:3|max:255',
+            'family_name'                        =>  'required|min:3|max:255',
+            'identification_number'              =>  'required|max:255',
+            'government_service_portal_password' =>  'required|max:255',
+            'date_of_birth'                      =>  'required|max:255',
+            'job_title'                          =>  'required',
+            'job_type'                           =>  'required',
+            'employer'                           =>  'required',
+            'address'                            =>  'required|min:3|max:255',
+            'phone'                              =>  'required|numeric',
+            'city_id'                            =>  'required',
+            'partner_family_address'             =>  'required',
+            'partner_employer'                   =>  'required',
+            'partner_identification_number'      =>  'required',
+            'partner_family_name'                =>  'required',
+            'partner_grandfather_name'           =>  'required',
+            'partner_father_name'                =>  'required',
+            'partner_first_name'                 =>  'required',
+            'court_id'                           =>  'required',
+            'police_office_id'                   =>  'required',
         ]);
 
-        $product = Product::find($id);
+        $customer = Customer::find($id);
 
 
-        $edit = $product->update([
+        $edit = $customer->update([
             'first_name' => $request->first_name,
             'father_name' => $request->father_name,
             'grandfather_name' => $request->grandfather_name,
@@ -198,6 +219,6 @@ class CustomerController extends Controller
      */
     public function destroy($id)
     {
-        Product::destroy($id);
+        Customer::destroy($id);
     }
 }
