@@ -20,9 +20,9 @@ return new class extends Migration
             $table->string('grandfather_name')->nullable();
             $table->string('family_name')->nullable();
             $table->unsignedInteger('identification_number')->nullable();
-            $table->string('phone')->nullable();
             $table->string('profile_image', 100)->nullable();
             $table->foreignId('supplier_id')->references('id')->on('Suppliers')->nullable();
+            $table->foreignId('phone_id')->references('id')->on('phons')->nullable();
             $table->timestamps();
         });
     }

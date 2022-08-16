@@ -22,8 +22,8 @@ return new class extends Migration
             $table->unsignedInteger('identification_number')->nullable();
             $table->string('relationship')->nullable();
             $table->string('address')->nullable();
-            $table->string('phone')->nullable();
             $table->foreignId('city_id')->references('id')->on('Cities')->nullable();
+            $table->foreignId('phone_id')->references('id')->on('phons')->nullable();
             $table->timestamps();
         });
     }

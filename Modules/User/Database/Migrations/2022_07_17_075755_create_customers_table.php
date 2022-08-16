@@ -29,7 +29,6 @@ return new class extends Migration
             $table->unsignedInteger('bank_account_number');
             $table->unsignedFloat('salary');
             $table->string('address')->nullable();
-            $table->string('phone')->nullable();
             $table->string('profile_image', 100)->nullable();
             $table->string('marital_status')->nullable();
             $table->string('partner_first_name');
@@ -43,6 +42,7 @@ return new class extends Migration
             $table->foreignId('court_id')->references('id')->on('Courts')->nullable();
             $table->foreignId('city_id')->references('id')->on('Cities')->nullable();
             $table->foreignId('branch_id')->references('id')->on('Branches')->nullable();
+            $table->foreignId('phone_id')->references('id')->on('phons')->nullable();
             $table->timestamps();
         });
     }

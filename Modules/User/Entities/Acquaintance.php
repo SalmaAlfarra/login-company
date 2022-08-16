@@ -4,6 +4,7 @@ namespace Modules\User\Entities;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Modules\Places\Entities\City;
 
 class Acquaintance extends Model
 {
@@ -31,5 +32,10 @@ class Acquaintance extends Model
     public function city()
     {
         return $this->belongsTo(City::class);
+    }
+
+    public function phone()
+    {
+        return $this->hasMany(Phone::class);
     }
 }

@@ -128,4 +128,9 @@ class Customer extends Model
     {
         return $this->belongsTo(Branch::class);
     }
+
+    public function phone()
+    {
+        return $this->hasMany(Phone::class);
+    }
 }

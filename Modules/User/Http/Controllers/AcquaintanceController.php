@@ -59,7 +59,6 @@ class AcquaintanceController extends Controller
             'customer_id' => 'required'
         ]);
 
-        /* $data = $request->validated(); */
         $add = Acquaintance::create([
             'first_name' => $request->first_name,
             'father_name' => $request->father_name,
