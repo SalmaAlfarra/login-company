@@ -27,7 +27,6 @@ return new class extends Migration
             $table->unsignedInteger('bank_account_number')->nullable();
             $table->unsignedFloat('salary')->nullable();
             $table->string('address')->nullable();
-            $table->string('phone')->nullable();
             $table->foreignId('city_id')->references('id')->on('Cities')->nullable();
             $table->timestamps();
         });

@@ -13,10 +13,10 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('customer_acquaintances', function (Blueprint $table) {
+        Schema::create('phone_user', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('customer_id')->references('id')->on('Customers')->nullable();
-            $table->foreignId('acquaintance_id')->references('id')->on('Acquaintances')->nullable();
+            $table->foreignId('phone_id')->references('id')->on('phons')->nullable();
+            $table->foreignId('user_id')->references('id')->on('users')->nullable();
             $table->timestamps();
         });
     }
@@ -28,6 +28,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('customer_acquaintances');
+        Schema::dropIfExists('phone_user');
     }
 };

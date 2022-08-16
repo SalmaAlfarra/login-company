@@ -29,7 +29,6 @@ return new class extends Migration
             $table->unsignedInteger('bank_account_number');
             $table->unsignedFloat('salary');
             $table->string('address')->nullable();
-            $table->string('phone')->nullable();
             $table->string('profile_image', 100)->nullable();
             $table->string('marital_status')->nullable();
             $table->string('partner_first_name');

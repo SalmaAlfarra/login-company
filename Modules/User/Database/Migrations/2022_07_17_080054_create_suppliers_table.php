@@ -21,7 +21,6 @@ return new class extends Migration
             $table->string('family_name')->nullable();
             $table->unsignedInteger('identification_number')->nullable();
             $table->string('address')->nullable();
-            $table->string('phone')->nullable();
             $table->string('email', 250)->unique();
             $table->string('profile_image', 100)->nullable();
             $table->timestamps();
