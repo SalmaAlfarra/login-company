@@ -31,4 +31,9 @@ class Supplier extends Model
     {
         return $this->hasMany(Delegate::class);
     }
+
+    public function phone()
+    {
+        return $this->hasMany(Phone::class);
+    }
 }

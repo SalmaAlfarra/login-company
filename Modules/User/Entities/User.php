@@ -43,6 +43,11 @@ class User extends Model
         return $this->hasMany(Plan::class);
     }
 
+    public function phone()
+    {
+        return $this->hasMany(Phone::class);
+    }
+
     protected $hidden = [
         'password',
         'remember_token',

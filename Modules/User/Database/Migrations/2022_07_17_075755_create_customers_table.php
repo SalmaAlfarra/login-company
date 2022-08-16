@@ -42,6 +42,7 @@ return new class extends Migration
             $table->foreignId('court_id')->references('id')->on('Courts')->nullable();
             $table->foreignId('city_id')->references('id')->on('Cities')->nullable();
             $table->foreignId('branch_id')->references('id')->on('Branches')->nullable();
+            $table->foreignId('phone_id')->references('id')->on('phons')->nullable();
             $table->timestamps();
         });
     }

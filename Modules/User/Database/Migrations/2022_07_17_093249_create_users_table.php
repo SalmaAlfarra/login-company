@@ -26,6 +26,7 @@ return new class extends Migration
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password', 250)->nullable();
             $table->string('profile_image', 100)->nullable();
+            $table->foreignId('phone_id')->references('id')->on('phons')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });

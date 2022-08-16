@@ -23,6 +23,7 @@ return new class extends Migration
             $table->string('address')->nullable();
             $table->string('email', 250)->unique();
             $table->string('profile_image', 100)->nullable();
+            $table->foreignId('phone_id')->references('id')->on('phons')->nullable();
             $table->timestamps();
         });
     }

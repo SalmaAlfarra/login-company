@@ -22,6 +22,7 @@ return new class extends Migration
             $table->unsignedInteger('identification_number')->nullable();
             $table->string('profile_image', 100)->nullable();
             $table->foreignId('supplier_id')->references('id')->on('Suppliers')->nullable();
+            $table->foreignId('phone_id')->references('id')->on('phons')->nullable();
             $table->timestamps();
         });
     }

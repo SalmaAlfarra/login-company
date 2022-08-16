@@ -28,6 +28,7 @@ return new class extends Migration
             $table->unsignedFloat('salary')->nullable();
             $table->string('address')->nullable();
             $table->foreignId('city_id')->references('id')->on('Cities')->nullable();
+            $table->foreignId('phone_id')->references('id')->on('phons')->nullable();
             $table->timestamps();
         });
     }

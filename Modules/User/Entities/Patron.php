@@ -37,4 +37,9 @@ class Patron extends Model
     {
         return $this->belongsTo(City::class);
     }
+
+    public function phone()
+    {
+        return $this->hasMany(Phone::class);
+    }
 }

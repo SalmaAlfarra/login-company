@@ -23,4 +23,9 @@ class Delegate extends Model
     {
         return $this->belongsTo(Supplier::class);
     }
+
+    public function phone()
+    {
+        return $this->hasMany(Phone::class);
+    }
 }
