@@ -10,8 +10,10 @@ use Modules\Places\Entities\Court;
 use Modules\Places\Entities\Branch;
 use Modules\User\Entities\Customer;
 use Modules\Option\Entities\Product;
+use Yajra\DataTables\Facades\DataTables;
 use Modules\Places\Entities\PoliceOffice;
 use Illuminate\Contracts\Support\Renderable;
+use Modules\User\Http\Requests\Customer\CreateCustomerRequest;
 
 class CustomerController extends Controller
 {
@@ -19,9 +21,44 @@ class CustomerController extends Controller
      * Display a listing of the resource.
      * @return Renderable
      */
-    public function index()
+    public function index(Request $request)
     {
-        return view('user::index');
+        if ($request->ajax()) {
+            $data = Customer::select([
+            'id',
+            'first_name',
+            'identification_number'
+            ]);
+            return DataTables::of($data)
+            ->addIndexColumn()
+            ->addColumn('action', function ($row) {
+            $btn = ' <a href="' . route('customer.edit', [$row->id]) . '" title="edit" class="dropdown-item"
+                style="display: contents">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                    class="feather feather-archive font-small-4 mr-50">
+                    <polyline points="21 8 21 21 3 21 3 8">
+                    </polyline>
+                    <rect x="1" y="3" width="22" height="5"></rect>
+                    <line x1="10" y1="12" x2="14" y2="12"></line>
+                </svg></a>';
+
+            $btn = $btn .'<a href="javascript:void(0)" data-id="' . $row->id . '" title="delete" style="display: contents"
+                class="dropdown-item deletecustomer"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                    viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                    stroke-linejoin="round" class="feather feather-trash-2 font-small-4 mr-50">
+                    <polyline points="3 6 5 6 21 6"></polyline>
+                    <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path>
+                    <line x1="10" y1="11" x2="10" y2="17"></line>
+                    <line x1="14" y1="11" x2="14" y2="17"></line>
+                </svg></a>';
+
+            return $btn;
+            })
+            ->rawColumns(['customer', 'action'])
+            ->make(true);
+        }
+        return view('user::customer.view-list');
     }
 
     /**
@@ -50,34 +87,9 @@ class CustomerController extends Controller
      * @param Request $request
      * @return Renderable
      */
-    public function store(Request $request)
+    public function store(CreateCustomerRequest $request)
     {
         /* dd($request); */
-
-         $request->validate([
-            'first_name'                         =>  'required|min:3|max:255',
-            'father_name'                        =>  'required|min:3|max:255',
-            'grandfather_name'                   =>  'required|min:3|max:255',
-            'family_name'                        =>  'required|min:3|max:255',
-            'identification_number'              =>  'required|max:255',
-            'government_service_portal_password' =>  'required|max:255',
-            'date_of_birth'                      =>  'required|max:255',
-            'job_title'                          =>  'required',
-            'job_type'                           =>  'required',
-            'employer'                           =>  'required',
-            'address'                            =>  'required|min:3|max:255',
-            'phone'                              =>  'required|numeric',
-            'city_id'                            =>  'required',
-            'partner_family_address'             =>  'required',
-            'partner_employer'                   =>  'required',
-            'partner_identification_number'      =>  'required',
-            'partner_family_name'                =>  'required',
-            'partner_grandfather_name'           =>  'required',
-            'partner_father_name'                =>  'required',
-            'partner_first_name'                 =>  'required',
-            'court_id'                           =>  'required',
-            'police_office_id'                   =>  'required',
-         ]);
 
         $add = Customer::create([
             'first_name'                         =>  $request->first_name,
@@ -106,9 +118,8 @@ class CustomerController extends Controller
             'identification_issuance_date'       =>  $request->identification_issuance_date
         ]);
 
-
-
         return redirect()->route('acquaintance.create');
+
     }
 
     /**
@@ -156,9 +167,9 @@ class CustomerController extends Controller
      * @param int $id
      * @return Renderable
      */
-    public function update(Request $request, $id)
+    public function update(EditCustomerRequest $request, $id)
     {
-        $request->validate([
+       /*  $request->validate([
             'first_name'                         =>  'required|min:3|max:255',
             'father_name'                        =>  'required|min:3|max:255',
             'grandfather_name'                   =>  'required|min:3|max:255',
@@ -182,7 +193,7 @@ class CustomerController extends Controller
             'court_id'                           =>  'required',
             'police_office_id'                   =>  'required',
         ]);
-
+ */
         $customer = Customer::find($id);
 
 

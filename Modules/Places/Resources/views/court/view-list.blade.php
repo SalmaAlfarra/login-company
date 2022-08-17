@@ -2,10 +2,10 @@
 @section('content')
     <section class="app-user-list">
 
-                    <div class="dt-buttons btn-group flex-wrap ">
+                    {{-- <div class="dt-buttons btn-group flex-wrap ">
                         <a href="{{ route('court.create') }}" class="btn add-new btn-primary mt-50"
                             style="margin: 20px;">Add court</a>
-                    </div>
+                    </div> --}}
                     <!-- list section start -->
                     <div class="card">
 
