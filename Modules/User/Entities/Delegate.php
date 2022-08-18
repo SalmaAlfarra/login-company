@@ -11,12 +11,8 @@ class Delegate extends Model
 
     protected $fillable =
     [
-        'first_name',
-        'father_name',
-        'grandfather_name',
-        'family_name',
+        'name',
         'phone',
-        'profile_image'
     ];
 
     public function supplier()

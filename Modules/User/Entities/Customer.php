@@ -24,10 +24,7 @@ class Customer extends Model
 
     protected $fillable =
     [
-        'first_name',
-        'father_name',
-        'grandfather_name',
-        'family_name',
+        'name',
         'identification_number',
         'identification_issuance_date',
         'government_service_portal_password',
@@ -41,10 +38,7 @@ class Customer extends Model
         'phone',
         'profile_image',
         'marital_status',
-        'partner_first_name',
-        'partner_father_name',
-        'partner_grandfather_name',
-        'partner_family_name',
+        'partner_name',
         'partner_identification_number',
         'partner_employer',
         'partner_family_address',

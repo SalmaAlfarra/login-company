@@ -2,6 +2,7 @@
 
 namespace Modules\User\Http\Controllers;
 
+use App\Imports\CustomersImport;
 use Illuminate\Http\Request;
 use Modules\Places\Entities\Bank;
 use Modules\Places\Entities\City;
@@ -12,6 +13,7 @@ use Modules\User\Entities\Customer;
 use Modules\Option\Entities\Product;
 use Modules\Places\Entities\PoliceOffice;
 use Illuminate\Contracts\Support\Renderable;
+use Maatwebsite\Excel\Facades\Excel;
 
 class CustomerController extends Controller
 {
@@ -54,11 +56,8 @@ class CustomerController extends Controller
     {
         /* dd($request); */
 
-         $request->validate([
-            'first_name'                         =>  'required|min:3|max:255',
-            'father_name'                        =>  'required|min:3|max:255',
-            'grandfather_name'                   =>  'required|min:3|max:255',
-            'family_name'                        =>  'required|min:3|max:255',
+        $request->validate([
+            'name'                               =>  'required|min:3|max:255',
             'identification_number'              =>  'required|max:255',
             'government_service_portal_password' =>  'required|max:255',
             'date_of_birth'                      =>  'required|max:255',
@@ -69,21 +68,15 @@ class CustomerController extends Controller
             'phone'                              =>  'required|numeric',
             'city_id'                            =>  'required',
             'partner_family_address'             =>  'required',
+            'partner_name'                       =>  'required',
             'partner_employer'                   =>  'required',
             'partner_identification_number'      =>  'required',
-            'partner_family_name'                =>  'required',
-            'partner_grandfather_name'           =>  'required',
-            'partner_father_name'                =>  'required',
-            'partner_first_name'                 =>  'required',
             'court_id'                           =>  'required',
             'police_office_id'                   =>  'required',
-         ]);
+        ]);
 
         $add = Customer::create([
-            'first_name'                         =>  $request->first_name,
-            'father_name'                        =>  $request->father_name,
-            'grandfather_name'                   =>  $request->grandfather_name,
-            'family_name'                        =>  $request->family_name,
+            'name'                               =>  $request->name,
             'identification_number'              =>  $request->identification_number,
             'government_service_portal_password' =>  $request->government_service_portal_password,
             'date_of_birth'                      =>  $request->date_of_birth,
@@ -93,20 +86,15 @@ class CustomerController extends Controller
             'address'                            =>  $request->address,
             'phone'                              =>  $request->phone,
             'city_id'                            =>  $request->city_id,
+            'partner_name'                       =>  $request->partner_first_name,
             'partner_family_address'             =>  $request->partner_family_address,
             'partner_employer'                   =>  $request->partner_employer,
             'partner_identification_number'      =>  $request->partner_identification_number,
-            'partner_family_name'                =>  $request->partner_family_name,
-            'partner_grandfather_name'           =>  $request->partner_grandfather_name,
-            'partner_father_name'                =>  $request->partner_father_name,
-            'partner_first_name'                 =>  $request->partner_first_name,
             'court_id'                           =>  $request->court_id,
             'police_office_id'                   =>  $request->police_office_id,
             'branch_id'                          =>  $request->branch_id,
             'identification_issuance_date'       =>  $request->identification_issuance_date
         ]);
-
-
 
         return redirect()->route('acquaintance.create');
     }
@@ -119,8 +107,8 @@ class CustomerController extends Controller
     public function show($id)
     {
         $customer = Customer::find($id);
-        return view('user::show',[
-            'customer'=>$customer,
+        return view('user::show', [
+            'customer' => $customer,
         ]);
     }
 
@@ -139,7 +127,7 @@ class CustomerController extends Controller
         $customer = Customer::find($id);
 
 
-        return view('user::edit',[
+        return view('user::edit', [
             'customer' => $customer,
             'city'     => $city,
             'court'    => $court,
@@ -219,6 +207,15 @@ class CustomerController extends Controller
      */
     public function destroy($id)
     {
-        Customer::destroy($id);
+    }
+
+    public function excelfile(Request $request)
+    {
+        return view('user::customer.file');
+    }
+    public function uploadexcel(Request $request)
+    {
+        Excel::import(new CustomersImport, $request->file('excelfile'));
+        return view('status::report.home');
     }
 }

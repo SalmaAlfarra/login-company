@@ -15,10 +15,7 @@ return new class extends Migration
     {
         Schema::create('customers', function (Blueprint $table) {
             $table->id();
-            $table->string('first_name')->nullable();
-            $table->string('father_name')->nullable();
-            $table->string('grandfather_name')->nullable();
-            $table->string('family_name')->nullable();
+            $table->string('name')->nullable();
             $table->unsignedInteger('identification_number')->nullable();
             $table->date('identification_issuance_date')->nullable();
             $table->string('government_service_portal_password')->nullable();
@@ -31,10 +28,7 @@ return new class extends Migration
             $table->string('address')->nullable();
             $table->string('profile_image', 100)->nullable();
             $table->string('marital_status')->nullable();
-            $table->string('partner_first_name');
-            $table->string('partner_father_name');
-            $table->string('partner_grandfather_name');
-            $table->string('partner_family_name');
+            $table->string('partner_name');
             $table->unsignedInteger('partner_identification_number');
             $table->string('partner_employer');
             $table->string('partner_family_address');
