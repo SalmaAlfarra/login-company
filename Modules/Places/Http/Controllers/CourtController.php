@@ -60,9 +60,9 @@ class CourtController extends Controller
      * Show the form for creating a new resource.
      * @return Renderable
      */
-  /*   public function create()
+    public function create()
     {
-        return view('places::court.create');
+       /*  return view('places::court.create');
 
         $courts = Court::all();
 
@@ -71,17 +71,19 @@ class CourtController extends Controller
             compact(
                 'courts'
             )
-        );
-    } */
+        ); */
+        return redirect()->route('court.index');
+    }
 
     /**
      * Store a newly created resource in storage.
      * @param Request $request
      * @return Renderable
      */
-   /*  public function store(Request $request)
+    public function store(Request $request)
     {
-        dd($request);
+        return redirect()->route('court.index');
+        /* dd($request);
         $request->validate([
             'name'    => 'required|min:3|max:255',
             'address' => 'required|max:255',
@@ -110,8 +112,8 @@ class CourtController extends Controller
         return $this->response(
             'added',
             route('places::court.create')
-        );
-    } */
+        ); */
+    }
 
     /**
      * Show the specified resource.
@@ -141,9 +143,10 @@ class CourtController extends Controller
      * @param int $id
      * @return Renderable
      */
-    /* public function update(Request $request, $id)
+    public function update(Request $request, $id)
     {
-        $request->validate([
+        return redirect()->route('court.index');
+       /* $request->validate([
             'name'    => 'required|min:3|max:255',
             'phone'   => 'required',
             'adderss' => 'required|max:255',
@@ -155,9 +158,9 @@ class CourtController extends Controller
             'name'    => $request->name,
             'phone'   => $request->phone,
             'adderss' => $request->adderss,
-        ]);
+        ]);*/
     }
- */
+
     /**
      * Remove the specified resource from storage.
      * @param int $id

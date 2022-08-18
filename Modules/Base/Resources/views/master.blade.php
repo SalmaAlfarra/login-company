@@ -47,7 +47,7 @@ License: You must have a valid license purchased only from themeforest(the above
 	</head>
 	<!--end::Head-->
 	<!--begin::Body-->
-	<body id="kt_body" class="header-fixed header-mobile-fixed subheader-enabled subheader-fixed aside-enabled aside-fixed aside-minimize-hoverable page-loading">
+	<body id="kt_body" class="header-fixed header-mobile-fixed subheader-enabled subheader-fixed aside-enabled          aside-fixed aside-minimize-hoverable page-loading">
 		<!--begin::Main-->
 		<!--begin::Header Mobile-->
 		@include("base::layout.logo")
@@ -163,36 +163,36 @@ License: You must have a valid license purchased only from themeforest(the above
 
         {{-- <script src="{{ asset('admin/assets/js/pages/crud/datatables/basic/basic.js')}}"></script> --}}
 
-    {{-- <script src="../../../app-assets/vendors/js/pickers/flatpickr/flatpickr.min.js"></script> --}}
-    <!-- END: Page Vendor JS-->
-
+        {{-- <script src="../../../app-assets/vendors/js/pickers/flatpickr/flatpickr.min.js"></script> --}}
+        <!-- END: Page Vendor JS-->
+    </body>
         {{-- @include("base::admin.uploader.index") --}}
         <script>
-        @if(Session::has('data'))
-            UserInterface.notify("{{ Session::get('data')['title'] }}", "{{ Session::get('data')['code'] }}", "{{ Session::get('data')['message'] }}");
-        @endif
-        //////////////////////
-        $('.date').datepicker({
-            language: 'ar',
-            todayHighlight: true,
-            clearBtn: true,
-            todayBtn: 'linked',
-            // orientation: 'top',
-            autoclose: true,
-            format: 'yyyy-m-d',
-        });
-        $('.datetimepicker').datetimepicker({
-            language: 'ar',
-            todayHighlight: true,
-            clearBtn: true,
-            todayBtn: 'linked',
-            orientation: 'top',
-            autoclose: true,
-            format: 'yyyy-m-d',
-        });
-        </script>
+            @if(Session::has('data'))
+                UserInterface.notify("{{ Session::get('data')['title'] }}", "{{ Session::get('data')['code'] }}", "{{ Session::get('data')['message'] }}");
+            @endif
+            //////////////////////
+            $('.date').datepicker({
+                language: 'ar',
+                todayHighlight: true,
+                clearBtn: true,
+                todayBtn: 'linked',
+                // orientation: 'top',
+                autoclose: true,
+                format: 'yyyy-m-d',
+            });
+            $('.datetimepicker').datetimepicker({
+                language: 'ar',
+                todayHighlight: true,
+                clearBtn: true,
+                todayBtn: 'linked',
+                orientation: 'top',
+                autoclose: true,
+                format: 'yyyy-m-d',
+            });
+            </script>
         @yield('js')
-	</body>
+
 	<!--end::Body-->
 </html>
 
