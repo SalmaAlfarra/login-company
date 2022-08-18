@@ -23,7 +23,7 @@ class Acquaintance extends Model
 
     public function customer()
     {
-        return $this->belongsToMany(Customer::class);
+        return $this->belongsToMany(Customer::class,"acquaintances_customer");
     }
 
     public function city()

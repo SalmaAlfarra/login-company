@@ -80,7 +80,7 @@ class Customer extends Model
 
     public function acquaintance()
     {
-        return $this->belongsToMany(Acquaintance::class);
+        return $this->belongsToMany(Acquaintance::class,'acquaintances_customer');
     }
 
     public function issue()

@@ -7,139 +7,38 @@ use Illuminate\Validation\Rule;
 
 class CreateCustomerRequest extends FormRequest
 {
-    public function rules()
+     public function rules()
     {
-        $rules = [];
-
-        $rules['first_name'] = [
-            'required',
-            'max:255',
+        return [
+        'first_name' => 'required|min:3|max:255',
+        'father_name' => 'required|min:3|max:255',
+        'grandfather_name' => 'required|min:3|max:255',
+        'family_name' => 'required|min:3|max:255',
+        'identification_number' => 'required|max:255',
+        'government_service_portal_password' => 'required|max:255',
+        'date_of_birth' => 'required|max:255',
+        'job_title' => 'required',
+        'job_type' => 'required',
+        'employer' => 'required',
+        'address' => 'required|min:3|max:255',
+        'phone' => 'required|numeric',
+        'city_id' => 'required',
+        'partner_family_address' => 'required',
+        'partner_employer' => 'required',
+        'partner_identification_number' => 'required',
+        'partner_family_name' => 'required',
+        'partner_grandfather_name' => 'required',
+        'partner_father_name' => 'required',
+        'partner_first_name' => 'required',
+        'court_id' => 'required',
+        'police_office_id' => 'required',
         ];
 
-        $rules['father_name'] = [
-            'required',
-            'max:255',
-        ];
 
-        $rules['grandfather_name'] = [
-            'required',
-            'max:255',
-        ];
-
-        $rules['family_name'] = [
-            'required',
-            'max:255',
-        ];
-
-        $rules['identification_number'] = [
-            'required',
-            'numeric',
-        ];
-
-        $rules['identification_issuance_date'] = [
-            'required',
-            'max:255',
-        ];
-
-        $rules['government_service_portal_password'] = [
-            'required',
-            'max:255',
-        ];
-
-        $rules['date_of_birth'] = [
-            'required',
-            'max:255',
-        ];
-
-        $rules['job_title'] = [
-            'required',
-            'max:255',
-        ];
-
-        $rules['job_type'] = [
-            'required',
-            'max:255',
-        ];
-
-        $rules['employer'] = [
-            'required',
-            'max:255',
-        ];
-
-        $rules['bank_account_number'] = [
-            'required',
-            'max:255',
-            'numeric',
-        ];
-
-        $rules['salary'] = [
-            'required',
-            'max:255',
-            'numeric',
-        ];
-
-        $rules['address'] = [
-            'required',
-            'max:255',
-        ];
-
-        $rules['phone'] = [
-
-            'numeric',
-            'digits_between:7,15',
-            /* Rule::unique('customers', 'phone') */
-        ];
-
-        $rules['profile_image'] = [
-            'nullable',
-            'image',
-        ];
-
-        $rules['status'] = [
-            'required',
-            Rule::in(['أعزب', 'متزوج', 'مطلق', 'أرمل'])
-        ];
-
-        $rules['partner_first_name'] = [
-            'nullable',
-            'max:255',
-        ];
-
-        $rules['partner_father_name'] = [
-            'nullable',
-            'max:255',
-        ];
-
-        $rules['partner_grandfather_name'] = [
-            'nullable',
-            'max:255',
-        ];
-
-        $rules['partner_family_name'] = [
-            'nullable',
-            'max:255',
-        ];
-
-        $rules['partner_identification_number'] = [
-            'nullable',
-            'numeric',
-        ];
-
-        $rules['partner_employer'] = [
-            'nullable',
-            'max:255',
-        ];
-
-        $rules['partner_family_address'] = [
-            'nullable',
-            'max:255',
-        ];
-
-        return $rules;
     }
 
-    public function all($keys = null)
+    /* public function all($keys = null)
     {
         return parent::all();
-    }
+    } */
 }

@@ -25,7 +25,7 @@ class CourtController extends Controller
                 return DataTables::of($data)
                     ->addIndexColumn()
                     ->addColumn('action', function ($row) {
-                        $btn = ' <a href="' . route('court.edit', [$row->id]) . '" title="edit" class="dropdown-item"
+                        /* $btn = ' <a href="' . route('court.edit', [$row->id]) . '" title="edit" class="dropdown-item"
                                 style="display: contents">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
                                     stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
@@ -34,9 +34,9 @@ class CourtController extends Controller
                                     </polyline>
                                     <rect x="1" y="3" width="22" height="5"></rect>
                                     <line x1="10" y1="12" x2="14" y2="12"></line>
-                                </svg></a>';
+                                </svg></a>'; */
 
-                        $btn = $btn . '<a href="javascript:void(0)" data-id="' . $row->id . '" title="delete" style="display: contents"
+                        $btn =  '<a href="javascript:void(0)" data-id="' . $row->id . '" title="delete" style="display: contents"
                         class="dropdown-item deletecourt"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
                             viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
                             stroke-linejoin="round" class="feather feather-trash-2 font-small-4 mr-50">
@@ -60,28 +60,28 @@ class CourtController extends Controller
      * Show the form for creating a new resource.
      * @return Renderable
      */
-    public function create()
+  /*   public function create()
     {
         return view('places::court.create');
 
-        /* $courts = Court::all();
+        $courts = Court::all();
 
         return view(
             'places::court.create',
             compact(
                 'courts'
             )
-        ); */
-    }
+        );
+    } */
 
     /**
      * Store a newly created resource in storage.
      * @param Request $request
      * @return Renderable
      */
-    public function store(Request $request)
+   /*  public function store(Request $request)
     {
-        /* dd($request); */
+        dd($request);
         $request->validate([
             'name'    => 'required|min:3|max:255',
             'address' => 'required|max:255',
@@ -93,14 +93,14 @@ class CourtController extends Controller
             'phone'   => $request->phone,
             'address' => $request->adderss,
         ]);
-        /*  $data = $request->validated();
+         $data = $request->validated();
         $image = $data['image'];
         $imageName = Carbon::now()->format('Y_m_d_h_i')  .  '.' . $image->getClientOriginalExtension();
         $image->storeAs('/courts', $imageName, ['disk' => 'public']);
 
         $data['image'] = 'courts/' . $imageName;
 
-        $add = Court::create($data);*/
+        $add = Court::create($data);
         if (!$add) {
             return $this->response(
                 'error'
@@ -111,7 +111,7 @@ class CourtController extends Controller
             'added',
             route('places::court.create')
         );
-    }
+    } */
 
     /**
      * Show the specified resource.
@@ -129,11 +129,11 @@ class CourtController extends Controller
      * @param int $id
      * @return Renderable
      */
-    public function edit($id)
+   /*  public function edit($id)
     {
         $court = Court::findOrFail($id);
         return view('places::edit', compact('court'));
-    }
+    } */
 
     /**
      * Update the specified resource in storage.
@@ -141,7 +141,7 @@ class CourtController extends Controller
      * @param int $id
      * @return Renderable
      */
-    public function update(Request $request, $id)
+    /* public function update(Request $request, $id)
     {
         $request->validate([
             'name'    => 'required|min:3|max:255',
@@ -157,7 +157,7 @@ class CourtController extends Controller
             'adderss' => $request->adderss,
         ]);
     }
-
+ */
     /**
      * Remove the specified resource from storage.
      * @param int $id
