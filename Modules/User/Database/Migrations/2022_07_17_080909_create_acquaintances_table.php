@@ -15,10 +15,7 @@ return new class extends Migration
     {
         Schema::create('acquaintances', function (Blueprint $table) {
             $table->id();
-            $table->string('first_name')->nullable();
-            $table->string('father_name')->nullable();
-            $table->string('grandfather_name')->nullable();
-            $table->string('family_name')->nullable();
+            $table->string('name')->nullable();
             $table->unsignedInteger('identification_number')->nullable();
             $table->string('relationship')->nullable();
             $table->string('address')->nullable();

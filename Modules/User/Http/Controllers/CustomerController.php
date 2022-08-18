@@ -2,6 +2,7 @@
 
 namespace Modules\User\Http\Controllers;
 
+use App\Imports\CustomersImport;
 use Illuminate\Http\Request;
 use Modules\Places\Entities\Bank;
 use Modules\Places\Entities\City;
@@ -15,7 +16,6 @@ use Modules\Places\Entities\PoliceOffice;
 use Illuminate\Contracts\Support\Renderable;
 use Modules\User\Http\Requests\Customer\CreateCustomerRequest;
 
-
 class CustomerController extends Controller
 {
     /**
@@ -24,42 +24,41 @@ class CustomerController extends Controller
      */
     public function index(Request $request)
     {
-          if ($request->ajax()) {
-          $data = Customer::select([
-          'id',
-          'first_name',
-          'identification_number',
-          ]);
-          return DataTables::of($data)
-          ->addIndexColumn()
-          ->addColumn('action', function ($row) {
-          $btn = ' <a href="' . route('customer.edit', [$row->id]) . '" title="edit" class="dropdown-item"
-              style="display: contents">
-              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                  class="feather feather-archive font-small-4 mr-50">
-                  <polyline points="21 8 21 21 3 21 3 8">
-                  </polyline>
-                  <rect x="1" y="3" width="22" height="5"></rect>
-                  <line x1="10" y1="12" x2="14" y2="12"></line>
-              </svg></a>';
+        if ($request->ajax()) {
+            $data = Customer::select([
+            'id',
+            'first_name',
+            'identification_number'
+            ]);
+            return DataTables::of($data)
+            ->addIndexColumn()
+            ->addColumn('action', function ($row) {
+            $btn = ' <a href="' . route('customer.edit', [$row->id]) . '" title="edit" class="dropdown-item"
+                style="display: contents">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                    class="feather feather-archive font-small-4 mr-50">
+                    <polyline points="21 8 21 21 3 21 3 8">
+                    </polyline>
+                    <rect x="1" y="3" width="22" height="5"></rect>
+                    <line x1="10" y1="12" x2="14" y2="12"></line>
+                </svg></a>';
 
-          $btn = $btn.'<a href="javascript:void(0)" data-id="' . $row->id . '" title="delete" style="display: contents"
-              class="dropdown-item deletecourt"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                  viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                  stroke-linejoin="round" class="feather feather-trash-2 font-small-4 mr-50">
-                  <polyline points="3 6 5 6 21 6"></polyline>
-                  <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path>
-                  <line x1="10" y1="11" x2="10" y2="17"></line>
-                  <line x1="14" y1="11" x2="14" y2="17"></line>
-              </svg></a>';
+            $btn = $btn .'<a href="javascript:void(0)" data-id="' . $row->id . '" title="delete" style="display: contents"
+                class="dropdown-item deletecustomer"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                    viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                    stroke-linejoin="round" class="feather feather-trash-2 font-small-4 mr-50">
+                    <polyline points="3 6 5 6 21 6"></polyline>
+                    <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path>
+                    <line x1="10" y1="11" x2="10" y2="17"></line>
+                    <line x1="14" y1="11" x2="14" y2="17"></line>
+                </svg></a>';
 
-          return $btn;
-          })
-          ->rawColumns(['court', 'action'])
-          ->make(true);
-          }
-
+            return $btn;
+            })
+            ->rawColumns(['customer', 'action'])
+            ->make(true);
+        }
         return view('user::customer.view-list');
     }
 
@@ -89,15 +88,12 @@ class CustomerController extends Controller
      * @param Request $request
      * @return Renderable
      */
-    public function store(CreateCustomerRequest $request)
+    public function store(Request $request)
     {
         /* dd($request); */
 
         $add = Customer::create([
-            'first_name'                         =>  $request->first_name,
-            'father_name'                        =>  $request->father_name,
-            'grandfather_name'                   =>  $request->grandfather_name,
-            'family_name'                        =>  $request->family_name,
+            'name'                               =>  $request->name,
             'identification_number'              =>  $request->identification_number,
             'government_service_portal_password' =>  $request->government_service_portal_password,
             'date_of_birth'                      =>  $request->date_of_birth,
@@ -107,6 +103,7 @@ class CustomerController extends Controller
             'address'                            =>  $request->address,
             'phone'                              =>  $request->phone,
             'city_id'                            =>  $request->city_id,
+            'partner_name'                       =>  $request->partner_first_name,
             'partner_family_address'             =>  $request->partner_family_address,
             'partner_employer'                   =>  $request->partner_employer,
             'partner_identification_number'      =>  $request->partner_identification_number,
@@ -132,8 +129,8 @@ class CustomerController extends Controller
     public function show($id)
     {
         $customer = Customer::find($id);
-        return view('user::customer.edit',[
-            'customer'=>$customer,
+        return view('user::show', [
+            'customer' => $customer,
         ]);
     }
 
@@ -169,7 +166,7 @@ class CustomerController extends Controller
      * @param int $id
      * @return Renderable
      */
-    public function update(EditCustomerRequest $request, $id)
+    public function update(Request $request, $id)
     {
        /*  $request->validate([
             'first_name'                         =>  'required|min:3|max:255',
@@ -232,6 +229,15 @@ class CustomerController extends Controller
      */
     public function destroy($id)
     {
-        Customer::destroy($id);
+    }
+
+    public function excelfile(Request $request)
+    {
+        return view('user::customer.file');
+    }
+    public function uploadexcel(Request $request)
+    {
+        Excel::import(new CustomersImport, $request->file('excelfile'));
+        return view('status::report.home');
     }
 }

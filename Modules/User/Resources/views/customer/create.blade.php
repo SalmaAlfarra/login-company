@@ -10,24 +10,9 @@
         <div class="card-body">
             <div class="form-group row mt-4">
                 <label class="col-lg-1 col-form-label text-lg-right">الاسم الشخصي : </label>
-                <div class="col-lg-2.5">
+                <div class="col-lg-5">
                     <input type="text" name="first_name" class="form-control form-control-solid" placeholder="الاسم الشخصي">
                     <span class="form-text text-muted">ادخل اسم العميل الشخصي</span>
-                </div>
-                <label class="col-lg-1 col-form-label text-lg-right">اسم الأب:</label>
-                <div class="col-lg-2.5">
-                    <input type="text" name="father_name" class="form-control form-control-solid" placeholder="اسم الوالد">
-                    <span class="form-text text-muted">ادخل اسم الوالد</span>
-                </div>
-                <label class="col-lg-1 col-form-label text-lg-right">اسم الجد :</label>
-                <div class="col-lg-2.5">
-                    <input type="text" name="grandfather_name" class="form-control form-control-solid" placeholder="اسم الجد">
-                    <span class="form-text text-muted">ادخل اسم الجد</span>
-                </div>
-                <label class="col-lg-1 col-form-label text-lg-right">اسم العائلة :</label>
-                <div class="col-lg-2.5">
-                    <input type="text" name="family_name" class="form-control form-control-solid" placeholder="اسم العائلة">
-                    <span class="form-text text-muted">ادخل اسم العائلة</span>
                 </div>
             </div>
             <div class="separator separator-dashed my-10"></div>
@@ -174,31 +159,21 @@
             <div class="separator separator-dashed my-10"></div>
             <div class="form-group row mt-4">
                 <label class="col-lg-1 col-form-label text-lg-right">الاسم الزوج/ة الشخصي : </label>
-                <div class="col-lg-2.5">
+                <div class="col-lg-5">
                     <input type="text" name="partner_first_name" class="form-control form-control-solid" placeholder="الاسم الشخصي">
                     <span class="form-text text-muted">ادخل اسم زوج/ة العميل الشخصي</span>
                 </div>
-                <label class="col-lg-1 col-form-label text-lg-right">اسم الأب:</label>
-                <div class="col-lg-2.5">
-                    <input type="text" name="partner_father_name" class="form-control form-control-solid" placeholder="اسم الوالد">
-                    <span class="form-text text-muted">ادخل اسم الوالد</span>
-                </div>
-                <label class="col-lg-1 col-form-label text-lg-right">اسم الجد :</label>
-                <div class="col-lg-2.5">
-                    <input type="text" name="partner_grandfather_name" class="form-control form-control-solid" placeholder="اسم الجد">
-                    <span class="form-text text-muted">ادخل اسم الجد</span>
-                </div>
-                <label class="col-lg-1 col-form-label text-lg-right">اسم العائلة :</label>
-                <div class="col-lg-2.5">
-                    <input type="text" name="partner_family_name" class="form-control form-control-solid" placeholder="اسم العائلة">
-                    <span class="form-text text-muted">ادخل اسم العائلة</span>
-                    <div class="separator separator-dashed my-10"></div>
-                </div>
+            </div>
+            <div class="separator separator-dashed my-10"></div>
+            <div class="form-group row mt-4">
                 <label class="col-lg-1 col-form-label text-lg-right">عنوان سكن أهل الزوج/ة:</label>
                 <div class="col-lg-5">
                     <input type="text" name="partner_family_address" class="form-control form-control-solid" placeholder="عنوان سكن أهل الزوج/ة">
                     <span class="form-text text-muted">أدخل عنوان سكن أهل الزوج/ة</span>
                 </div>
+            </div>
+            <div class="separator separator-dashed my-10"></div>
+            <div class="form-group row mt-4">
                 <label class="col-lg-1 col-form-label text-lg-right"> رقم هوية الزوج/ة:</label>
                 <div class="col-lg-4 ">
                     <input type="phone" name="partner_identification_number" class="form-control form-control-solid" placeholder="رقم هوية الزوج/ة">

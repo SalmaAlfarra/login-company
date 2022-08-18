@@ -16,10 +16,7 @@ class User extends Model
     protected $fillable =
     [
         'user_name',
-        'first_name',
-        'father_name',
-        'grandfather_name',
-        'family_name',
+        'name',
         // 'city',
         'address',
         'phone',

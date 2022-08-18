@@ -23,7 +23,6 @@ use Modules\Places\Http\Controllers\PoliceOfficeController;
 Route::get('/home', function () {
     return view('status::report.home');
 });
-
 Route::resource('customer', CustomerController::class);
 
 Route::resource('category', CategoryController::class);
@@ -81,3 +80,5 @@ Route::get('/media', function () {
 Route::get('/plane', function () {
     return view('attachment::plane.create');
 });
+Route::get('/fileupload', [CustomerController::class, 'excelfile']);
+Route::post('/excel', [CustomerController::class, 'uploadexcel'])->name('customer.excel');
