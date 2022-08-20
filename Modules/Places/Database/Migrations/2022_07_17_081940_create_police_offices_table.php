@@ -16,8 +16,6 @@ return new class extends Migration
         Schema::create('police_offices', function (Blueprint $table) {
             $table->id();
             $table->string('name')->nullable();
-            $table->string('phone')->nullable();
-            $table->string('adderss')->nullable();
             $table->timestamps();
         });
     }

@@ -16,7 +16,7 @@
                                     <thead class="thead-light">
                                         <tr>
                                             <th></th>
-                                            <th>first_name</th>
+                                            <th>name</th>
                                             <th>identification_number</th>
                                             <th>Actions</th>
                                         </tr>
@@ -71,8 +71,8 @@
                                     name: 'id'
                                 },
                                 {
-                                    data: 'first_name',
-                                    name: 'first_name'
+                                    data: 'name',
+                                    name: 'name'
                                 },
                                 {
                                     data: 'identification_number',
@@ -139,7 +139,7 @@
                                 if (result.isConfirmed) {
                                     $.ajax({
                                     data: {
-                                     "_token": "{{ csrf_token() }}",
+                                    "_token": "{{ csrf_token() }}",
                                     "customer_id": customer_id
                                             },
                                         type: "DELETE",

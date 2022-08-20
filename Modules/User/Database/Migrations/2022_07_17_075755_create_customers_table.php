@@ -16,6 +16,7 @@ return new class extends Migration
         Schema::create('customers', function (Blueprint $table) {
             $table->id();
             $table->string('name')->nullable();
+            $table->unsignedInteger('file_number')->nullable();
             $table->unsignedInteger('identification_number')->nullable();
             $table->date('identification_issuance_date')->nullable();
             $table->string('government_service_portal_password')->nullable();

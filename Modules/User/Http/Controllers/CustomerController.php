@@ -14,6 +14,7 @@ use Modules\Option\Entities\Product;
 use Yajra\DataTables\Facades\DataTables;
 use Modules\Places\Entities\PoliceOffice;
 use Illuminate\Contracts\Support\Renderable;
+use Maatwebsite\Excel\Facades\Excel;
 use Modules\User\Http\Requests\Customer\CreateCustomerRequest;
 
 class CustomerController extends Controller
@@ -26,14 +27,14 @@ class CustomerController extends Controller
     {
         if ($request->ajax()) {
             $data = Customer::select([
-            'id',
-            'first_name',
-            'identification_number'
+                'id',
+                'name',
+                'identification_number'
             ]);
             return DataTables::of($data)
-            ->addIndexColumn()
-            ->addColumn('action', function ($row) {
-            $btn = ' <a href="' . route('customer.edit', [$row->id]) . '" title="edit" class="dropdown-item"
+                ->addIndexColumn()
+                ->addColumn('action', function ($row) {
+                    $btn = ' <a href="' . route('customer.edit', [$row->id]) . '" title="edit" class="dropdown-item"
                 style="display: contents">
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
                     stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
@@ -44,7 +45,7 @@ class CustomerController extends Controller
                     <line x1="10" y1="12" x2="14" y2="12"></line>
                 </svg></a>';
 
-            $btn = $btn .'<a href="javascript:void(0)" data-id="' . $row->id . '" title="delete" style="display: contents"
+                    $btn = $btn . '<a href="javascript:void(0)" data-id="' . $row->id . '" title="delete" style="display: contents"
                 class="dropdown-item deletecustomer"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
                     viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
                     stroke-linejoin="round" class="feather feather-trash-2 font-small-4 mr-50">
@@ -54,10 +55,10 @@ class CustomerController extends Controller
                     <line x1="14" y1="11" x2="14" y2="17"></line>
                 </svg></a>';
 
-            return $btn;
-            })
-            ->rawColumns(['customer', 'action'])
-            ->make(true);
+                    return $btn;
+                })
+                ->rawColumns(['customer', 'action'])
+                ->make(true);
         }
         return view('user::customer.view-list');
     }
@@ -118,7 +119,6 @@ class CustomerController extends Controller
         ]);
 
         return redirect()->route('acquaintance.create');
-
     }
 
     /**
@@ -149,7 +149,7 @@ class CustomerController extends Controller
         $customer = Customer::find($id);
 
 
-        return view('user::edit',[
+        return view('user::edit', [
             'customer' => $customer,
             'city'     => $city,
             'court'    => $court,
@@ -168,7 +168,7 @@ class CustomerController extends Controller
      */
     public function update(Request $request, $id)
     {
-       /*  $request->validate([
+        /*  $request->validate([
             'first_name'                         =>  'required|min:3|max:255',
             'father_name'                        =>  'required|min:3|max:255',
             'grandfather_name'                   =>  'required|min:3|max:255',
