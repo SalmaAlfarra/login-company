@@ -29,8 +29,19 @@
                                 <i class="menu-arrow"></i>
                             </div>
                         </li>
-                        <li class="menu-item" aria-haspopup="true">
+                        <li class="menu-item menu-item-submenu" aria-haspopup="true" data-menu-toggle="hover">
                             <a href="#" class="menu-link">
+                                <i class="menu-bullet menu-bullet-dot">
+                                    <span></span>
+                                </i>
+                                <span class="menu-text">إضافة ملف عملاء</span>
+                            </a>
+                            <div class="menu-submenu">
+                                <i class="menu-arrow"></i>
+                            </div>
+                        </li>
+                        <li class="menu-item" aria-haspopup="true">
+                            <a href="{{route('customer.index')}}" class="menu-link">
                                 <i class="menu-bullet menu-bullet-dot">
                                     <span></span>
                                 </i>
