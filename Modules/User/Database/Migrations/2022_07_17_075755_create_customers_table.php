@@ -18,12 +18,12 @@ return new class extends Migration
             $table->string('name')->nullable();
             $table->unsignedInteger('file_number')->nullable();
             $table->unsignedInteger('identification_number')->nullable();
-            $table->date('identification_issuance_date')->nullable();
             $table->string('government_service_portal_password')->nullable();
             $table->date('date_of_birth')->nullable();
             $table->string('job_title')->nullable();
             $table->string('job_type');
             $table->string('employer');
+            $table->string('job_status');
             $table->unsignedInteger('bank_account_number');
             $table->unsignedFloat('salary');
             $table->string('address')->nullable();
