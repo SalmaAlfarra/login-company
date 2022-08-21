@@ -44,11 +44,8 @@
                 <script src="{{asset("datatable/buttons.print.min.js")}}"></script>
                 <script src="{{asset("datatable/dataTables.rowGroup.min.js")}}"></script>
                 <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-            <!-- BEGIN: Theme JS-->
-
                 <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
-            <!-- END: Theme JS-->
                 <script type="text/javascript">
                     $(function () {
                         $.ajaxSetup({

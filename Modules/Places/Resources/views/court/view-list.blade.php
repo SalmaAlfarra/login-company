@@ -17,8 +17,8 @@
                                         <tr>
                                             <th></th>
                                             <!-- <th>id</th> -->
-                                            <th> name</th>
-                                            <th>Actions</th>
+                                            <th>الاسم</th>
+
                                         </tr>
                                     </thead>
                                 </table>
@@ -74,12 +74,12 @@
                                 data: 'name',
                                 name: 'name'
                             },
-                            {
+                            /* {
                                 data: 'action',
                                 name: 'action',
                                 orderable: false,
                                 searchable: false
-                            },
+                            }, */
                         ],
                         buttons: [{
                             text: 'Add court',

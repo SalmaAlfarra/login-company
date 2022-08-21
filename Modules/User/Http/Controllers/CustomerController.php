@@ -197,7 +197,7 @@ class CustomerController extends Controller
 
 
         $edit = $customer->update([
-            'first_name' => $request->first_name,
+            'name' => $request->first_name,
             'father_name' => $request->father_name,
             'grandfather_name' => $request->grandfather_name,
             'family_name' => $request->family_name,
