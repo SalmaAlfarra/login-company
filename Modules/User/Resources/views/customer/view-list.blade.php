@@ -16,9 +16,9 @@
                                     <thead class="thead-light">
                                         <tr>
                                             <th></th>
-                                            <th>name</th>
-                                            <th>identification_number</th>
-                                            <th>Actions</th>
+                                            <th>الاسم الشخصي للعميل</th>
+                                            <th>رقم الملف</th>
+                                            <th>الإجراء</th>
                                         </tr>
                                     </thead>
                                 </table>
@@ -72,8 +72,8 @@
                                     name: 'name'
                                 },
                                 {
-                                    data: 'identification_number',
-                                    name: 'identification_number'
+                                    data: 'file_number',
+                                    name: 'file_number'
                                 },
                                 {
                                     data: 'action',

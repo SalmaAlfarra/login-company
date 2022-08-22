@@ -72,7 +72,7 @@
                             </div>
                         </li>
                         <li class="menu-item" aria-haspopup="true">
-                            <a href="#" class="menu-link">
+                            <a href="{{route('acquaintance.index')}}" class="menu-link">
                                 <i class="menu-bullet menu-bullet-dot">
                                     <span></span>
                                 </i>
@@ -103,7 +103,7 @@
                             </div>
                         </li>
                         <li class="menu-item" aria-haspopup="true">
-                            <a href="#" class="menu-link">
+                            <a href="{{route('patron.index')}}" class="menu-link">
                                 <i class="menu-bullet menu-bullet-dot">
                                     <span></span>
                                 </i>

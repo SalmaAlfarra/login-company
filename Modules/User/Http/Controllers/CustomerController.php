@@ -29,7 +29,7 @@ class CustomerController extends Controller
             $data = Customer::select([
                 'id',
                 'name',
-                'identification_number'
+                'file_number'
             ]);
             return DataTables::of($data)
                 ->addIndexColumn()
@@ -95,12 +95,14 @@ class CustomerController extends Controller
 
         $add = Customer::create([
             'name'                               =>  $request->name,
+            'file_number'                        =>  $request->file_number,
             'identification_number'              =>  $request->identification_number,
             'government_service_portal_password' =>  $request->government_service_portal_password,
             'date_of_birth'                      =>  $request->date_of_birth,
             'job_title'                          =>  $request->job_title,
             'job_type'                           =>  $request->job_type,
             'employer'                           =>  $request->employer,
+            'job_status'                         => $request->job_status,
             'address'                            =>  $request->address,
             'phone'                              =>  $request->phone,
             'city_id'                            =>  $request->city_id,
@@ -197,16 +199,14 @@ class CustomerController extends Controller
 
 
         $edit = $customer->update([
-            'name' => $request->first_name,
-            'father_name' => $request->father_name,
-            'grandfather_name' => $request->grandfather_name,
-            'family_name' => $request->family_name,
-            'identification_number' => $request->identification_number,
+            'first_name' => $request->first_name,
+            'file_number' => $request->file_number,
             'government_service_portal_password' => $request->government_service_portal_password,
             'date_of_birth' => $request->date_of_birth,
             'job_title' => $request->job_title,
             'job_type' => $request->job_type,
             'employer' => $request->employer,
+            'job_status' => $request->job_status,
             'address' => $request->address,
             'phone' => $request->phone,
             'city_id' => $request->city_id,
@@ -238,6 +238,6 @@ class CustomerController extends Controller
     public function uploadexcel(Request $request)
     {
         Excel::import(new CustomersImport, $request->file('excelfile'));
-        return view('status::report.home');
+        return view('user::customer.view-list');
     }
 }

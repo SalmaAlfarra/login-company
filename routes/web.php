@@ -80,5 +80,5 @@ Route::get('/media', function () {
 Route::get('/plane', function () {
     return view('attachment::plane.create');
 });
-Route::get('/fileupload', [CustomerController::class, 'excelfile']);
+Route::get('/fileupload', [CustomerController::class, 'excelfile'])->name('customer.fileupload');
 Route::post('/excel', [CustomerController::class, 'uploadexcel'])->name('customer.excel');

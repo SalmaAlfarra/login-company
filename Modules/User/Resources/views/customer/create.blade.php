@@ -9,9 +9,14 @@
         @csrf
         <div class="card-body">
             <div class="form-group row mt-4">
-                <label class="col-lg-1 col-form-label text-lg-right">الاسم الشخصي : </label>
-                <div class="col-lg-5">
-                    <input type="text" name="first_name" class="form-control form-control-solid" placeholder="الاسم الشخصي">
+                <label class="col-lg-1 col-form-label text-lg-right">رقم ملف العميل :</label>
+                <div class="col-lg-4">
+                    <input type="text" name="file_number" class="form-control form-control-solid" placeholder="رقم الملف ">
+                    <span class="form-text text-muted">ادخل رقم ملف العميل</span>
+                </div>
+                <label class="col-lg-1 col-form-label text-lg-right">اسم العميل الشخصي : </label>
+                <div class="col-lg-4">
+                    <input type="text" name="first_name" class="form-control form-control-solid" placeholder="اسم العميل الشخصي">
                     <span class="form-text text-muted">ادخل اسم العميل الشخصي</span>
                 </div>
             </div>
@@ -73,29 +78,17 @@
             <div class="separator separator-dashed my-10"></div>
             <div class="form-group row mt-4">
                 <label class="col-lg-1 col-form-label text-lg-right">رقم الهوية : </label>
-                <div class="col-lg-2.5">
+                <div class="col-lg-3">
                     <input type="text" name="identification_number" class="form-control form-control-solid" placeholder="رقم الهوية ">
                     <span class="form-text text-muted">ادخل رقم هوية العميل</span>
                 </div>
-                <label class="col-lg-1 col-form-label text-lg-right">تاريخ الإصدار :</label>
-                <div class="col-lg-2">
-                    <div class="input-group date">
-                        <input type="text" name="identification_issuance_date" class="form-control form-control-solid" id="kt_datepicker_2" readonly="readonly" placeholder="تاريخ إصدار الهوية ">
-                        <div class="input-group-append">
-                            <span class="input-group-text">
-                                <i class="la la-calendar-check-o"></i>
-                            </span>
-                        </div>
-                    </div>
-                    <span class="form-text text-muted">ادخل تاريخ هوية إصدار الهوية</span>
-                </div>
                 <label class="col-lg-1 col-form-label text-lg-right">رقم الدخول الموحد:</label>
-                <div class="col-lg-2.5">
+                <div class="col-lg-3">
                     <input type="text" name="government_service_portal_password" class="form-control form-control-solid" placeholder="ؤقم الدخول الموحد ">
                     <span class="form-text text-muted">ادخل رقم الدخول الموحد</span>
                 </div>
                 <label class="col-lg-1 col-form-label text-lg-right">تاريخ الميلاد :</label>
-                <div class="col-lg-2">
+                <div class="col-lg-3">
                     <div class="input-group date">
                         <input type="text" name="date_of_birth" class="form-control form-control-solid" id="kt_datepicker_2" readonly="readonly" placeholder="تاريخ الميلاد  ">
                         <div class="input-group-append">

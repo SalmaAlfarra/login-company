@@ -25,6 +25,7 @@ class Customer extends Model
     protected $fillable =
     [
         'name',
+        'file_number',
         'identification_number',
         'identification_issuance_date',
         'government_service_portal_password',
@@ -32,6 +33,7 @@ class Customer extends Model
         'job_title',
         'job_type',
         'employer',
+        'job_status',
         'bank_account_number',
         'salary',
         'address',
@@ -80,7 +82,7 @@ class Customer extends Model
 
     public function acquaintance()
     {
-        return $this->belongsToMany(Acquaintance::class,'acquaintances_customer');
+        return $this->belongsToMany(Acquaintance::class, 'acquaintances_customer');
     }
 
     public function issue()
