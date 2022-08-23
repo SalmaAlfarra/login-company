@@ -17,8 +17,7 @@
                                         <tr>
                                             <th></th>
                                             <th>name</th>
-                                            <th>phone</th>
-                                            
+
                                         </tr>
                                     </thead>
                                 </table>
@@ -70,10 +69,6 @@
                                 {
                                     data: 'name',
                                     name: 'name'
-                                },
-                                {
-                                    data: 'phone',
-                                    name: 'phone'
                                 },
                                 /* {
                                     data: 'action',

@@ -18,15 +18,14 @@ class PoliceOfficeController extends Controller
      */
     public function index(Request $request)
     {
-          if ($request->ajax()) {
-            $data =PoliceOffice::select([
-            'id',
-            'name',
-            'phone',
+        if ($request->ajax()) {
+            $data = PoliceOffice::select([
+                'id',
+                'name',
             ]);
             return DataTables::of($data)
-            ->addIndexColumn()
-            /* ->addColumn('action', function ($row) {
+                ->addIndexColumn()
+                /* ->addColumn('action', function ($row) {
             $btn = ' <a href="' . route('police-office.edit', [$row->id]) . '" title="edit" class="dropdown-item"
                 style="display: contents">
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
@@ -50,8 +49,8 @@ class PoliceOfficeController extends Controller
 
             return $btn;
             })*/
-            ->rawColumns(['police',])
-            ->make(true);
+                ->rawColumns(['police',])
+                ->make(true);
         }
         return view('places::police-office.view-list');
     }
@@ -79,20 +78,20 @@ class PoliceOfficeController extends Controller
 
 
         $request->validate([
-        'name' => 'required|min:3|max:255',
-        'phone' => 'required',
-        'adderss' => 'required|max:255',
+            'name' => 'required|min:3|max:255',
+            'phone' => 'required',
+            'adderss' => 'required|max:255',
         ]);
 
 
-       $add = PoliceOffice::create([
-        'name' => $request->name,
-        'phone' => $request->phone,
-        'adderss' =>$request->adderss,
+        $add = PoliceOffice::create([
+            'name' => $request->name,
+            'phone' => $request->phone,
+            'adderss' => $request->adderss,
         ]);
         /* $data = $request->validated();
 
-         $image = $data['image'];
+        $image = $data['image'];
         $imageName = Carbon::now()->format('Y_m_d_h_i')  .  '.' . $image->getClientOriginalExtension();
         $image->storeAs('/policeoffices', $imageName, ['disk' => 'public']);
 
@@ -129,9 +128,9 @@ class PoliceOfficeController extends Controller
     public function edit(PoliceOffice $policeOffice)
     {
         /* $policeoffice = PoliceOffice::findOrFail($id); */
-        return view('places::police-office.edit',[
+        return view('places::police-office.edit', [
 
-            'policeoffice'=>$policeOffice,
+            'policeoffice' => $policeOffice,
 
         ]);
     }
@@ -145,17 +144,17 @@ class PoliceOfficeController extends Controller
     public function update(Request $request, $id)
     {
         $request->validate([
-        'name' => 'required|min:3|max:255',
-        'phone' => 'required',
-        'adderss' => 'required|max:255',
+            'name' => 'required|min:3|max:255',
+            'phone' => 'required',
+            'adderss' => 'required|max:255',
         ]);
 
         $policeoffice = PoliceOffice::find($id);
 
         $edit = $policeoffice->update([
-        'name' => $request->name,
-        'phone' => $request->phone,
-        'adderss' =>$request->adderss,
+            'name' => $request->name,
+            'phone' => $request->phone,
+            'adderss' => $request->adderss,
         ]);
     }
 
