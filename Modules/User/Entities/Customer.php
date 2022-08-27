@@ -9,6 +9,7 @@ use Modules\Attachment\Entities\Archives;
 use Modules\Attachment\Entities\Credit_Card;
 use Modules\Option\Entities\Legal_Procedur;
 use Modules\Option\Entities\Order;
+use Modules\Option\Entities\PaymentMechanism;
 use Modules\Places\Entities\Branch;
 use Modules\Places\Entities\City;
 use Modules\Places\Entities\Court;
@@ -24,30 +25,20 @@ class Customer extends Model
 
     protected $fillable =
     [
-        'name',
         'file_number',
+        'file_classification',
+        'full_name',
         'identification_number',
-        'identification_issuance_date',
         'government_service_portal_password',
-        'date_of_birth',
-        'job_title',
-        'job_type',
-        'employer',
-        'job_status',
-        'bank_account_number',
-        'salary',
         'address',
-        'phone',
-        'profile_image',
-        'marital_status',
-        'partner_name',
-        'partner_identification_number',
-        'partner_employer',
-        'partner_family_address',
         'city_id',
-        'court_id',
+        'phone_id',
         'police_office_id',
-        'branch_id'
+        'court_id',
+        'payment_mechanism_id',
+        'works_id',
+        'material_statuse_id',
+        'salary_id',
     ];
 
     public function account_statment()
@@ -128,5 +119,25 @@ class Customer extends Model
     public function phone()
     {
         return $this->hasMany(Phone::class);
+    }
+
+    public function work()
+    {
+        return $this->belongsTo(Work::class);
+    }
+
+    public function material_status()
+    {
+        return $this->hasOne(Material_Status::class);
+    }
+
+    public function salary()
+    {
+        return $this->hasOne(Salary::class);
+    }
+
+    public function payment_mechanism()
+    {
+        return $this->belongsToMany(PaymentMechanism::class);
     }
 }

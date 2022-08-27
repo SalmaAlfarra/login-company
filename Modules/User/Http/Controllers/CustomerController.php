@@ -10,7 +10,6 @@ use Illuminate\Routing\Controller;
 use Modules\Places\Entities\Court;
 use Modules\Places\Entities\Branch;
 use Modules\User\Entities\Customer;
-use Modules\Option\Entities\Product;
 use Yajra\DataTables\Facades\DataTables;
 use Modules\Places\Entities\PoliceOffice;
 use Illuminate\Contracts\Support\Renderable;

@@ -15,29 +15,20 @@ return new class extends Migration
     {
         Schema::create('customers', function (Blueprint $table) {
             $table->id();
-            $table->string('name')->nullable();
             $table->unsignedInteger('file_number')->nullable();
+            $table->unsignedInteger('file_classification')->nullable();
+            $table->string('full_name')->nullable();
             $table->unsignedInteger('identification_number')->nullable();
             $table->string('government_service_portal_password')->nullable();
-            $table->date('date_of_birth')->nullable();
-            $table->string('job_title')->nullable();
-            $table->string('job_type');
-            $table->string('employer');
-            $table->string('job_status');
-            $table->unsignedInteger('bank_account_number');
-            $table->unsignedFloat('salary');
             $table->string('address')->nullable();
-            $table->string('profile_image', 100)->nullable();
-            $table->string('marital_status')->nullable();
-            $table->string('partner_name');
-            $table->unsignedInteger('partner_identification_number');
-            $table->string('partner_employer');
-            $table->string('partner_family_address');
+            $table->foreignId('city_id')->references('id')->on('Cities')->nullable();
+            $table->foreignId('phone_id')->references('id')->on('Phons')->nullable();
             $table->foreignId('police_office_id')->references('id')->on('Police_offices')->nullable();
             $table->foreignId('court_id')->references('id')->on('Courts')->nullable();
-            $table->foreignId('city_id')->references('id')->on('Cities')->nullable();
-            $table->foreignId('branch_id')->references('id')->on('Branches')->nullable();
-            $table->foreignId('phone_id')->references('id')->on('phons')->nullable();
+            $table->foreignId('payment_mechanism_id')->references('id')->on('Payment_mechanism')->nullable();
+            $table->foreignId('work_id')->references('id')->on('Works')->nullable();
+            $table->foreignId('material_statuse_id')->references('id')->on('Material_statuses')->nullable();
+            $table->foreignId('salary_id')->references('id')->on('Salaries')->nullable();
             $table->timestamps();
         });
     }
