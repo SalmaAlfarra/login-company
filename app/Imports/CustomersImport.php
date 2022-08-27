@@ -16,8 +16,13 @@ class CustomersImport implements ToModel
     {
         return new Customer([
             //
-            'name' => $row[0],
-            'file_number' => $row[1],
+            'file_number' => $row[0],
+            'file_classification' => $row[1],
+            'full_name' => $row[2],
+            'identification_number' => $row[3],
+            'government_service_portal_password' => $row[4],
+            'address' => $row[5],
+
         ]);
     }
 }
