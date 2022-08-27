@@ -68,8 +68,8 @@
                                     name: 'id'
                                 },
                                 {
-                                    data: 'name',
-                                    name: 'name'
+                                    data: 'full_name',
+                                    name: 'full_name'
                                 },
                                 {
                                     data: 'file_number',
@@ -98,7 +98,7 @@
                                     display: $.fn.dataTable.Responsive.display.modal({
                                         header: function (row) {
                                             var data = row.data();
-                                            return 'Details of ' + data['name'];
+                                            return 'Details of ' + data['full_name'];
                                         }
                                     }),
                                     type: 'column',

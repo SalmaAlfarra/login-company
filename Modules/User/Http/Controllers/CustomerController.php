@@ -27,7 +27,7 @@ class CustomerController extends Controller
         if ($request->ajax()) {
             $data = Customer::select([
                 'id',
-                'name',
+                'full_name',
                 'file_number'
             ]);
             return DataTables::of($data)
